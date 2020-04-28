@@ -1,5 +1,36 @@
 # Code and data repository for ["Two-stage Variational Mode Decomposition and Support Vector Regression"](https://www.hydrol-earth-syst-sci-discuss.net/hess-2019-565/#discussion)
 
+
+## Title
+
+Code and data for "Two-stage Variational Mode Decomposition and Support Vector Regression for Streamflow Forecasting"
+
+## Author
+
+Ganggang Zuo (zuoganggang@163.com)
+
+## Institutions
+
+State Key Laboratory of Eco-hydraulics in Northwest Arid Region, Xi’an University of Technology, Xi’an, Shaanxi 710048, China
+
+## Categories
+
+hydro; signal preprocessing; surface water
+
+## Description
+
+This data repository contains code and data for research article, namely, “Two-stage Variational Mode Decomposition and Support Vector Regression for Streamflow Forecasting”, which is currently under review for the journal _Hydrology and Earth System Sciences (HESS)_.
+
+The underlying data of this study is the monthly runoff data sets  (1953/01-2018/12) of Huaxian, Xianyang and Zhangjiashan stations, Wei River, China, which is organized in "_time_series_" directory.
+
+The fundamental code for decomposing runoff data, deciding input predictors and output target, generating machine learning samples, building support vector regression (SVR) models and evaluating the model performance are organized in “_tools_” directory.
+The execution code for forecasting different runoff series using different decomposition algorithms (e.g., variational mode decomposition (VMD), ensemble empirical mode decomposition (EEMD), discrete wavelet transform (DWT), Singular spectrum analysis (SSA)  or non-decomposition-based (orig)) are organized in “_projects_” directory (e.g., “_huaxian_vmd/projects/_”).
+
+
+To reproduce the results of this paper, follow the instructions given in [readme.md](/readme.md). Note that the same results demonstrated in this paper cannot be reproduced but similar results should be reproduced.
+
+
+## Open-source software
 This study heavily relies on the open-source software. Pandas (McKinney, 2010) and numpy (Stéfan et al., 2011) were used to manage and process streamflow data. Matlab was used to perform variational mode decomposition ([VMD](https://ieeexplore.ieee.org/document/6655981)), ensemble empirical mode decomposition ([EEMD](https://doi.org/10.1142/S1793536909000047)), and discrete wavelet transform ([DWT](https://www.mathworks.com/help/wavelet/ref/dwt.html)) of streamflow and compute the partial autocorrelation coefficient (PACF) of subsignals. The matlab implementations of VMD and EEMD come from Dragomiretskiy and Zosso (2014) and Wu and Huang (2009), respectively. The DWT was performed based on matlab build-in toolbox (“Wavelet 1-D” in “Wavelet Analyzer”). The SSA was performed based on [a python program developed by  Jordan D'Arcy](https://www.kaggle.com/jdarcy/introducing-ssa-for-time-series-decomposition). The SVR model in [scikit-learn](https://scikit-learn.org/stable/) (Pedregosa et al., 2011) was used to train SVR models. [scikit-optimize](https://scikit-optimize.github.io/) (Tim et al., 2018) was used to tune the SVR models. Matplotlib (Hunter, 2007) was used to draw figures.
 
 ## How to validate the research results
