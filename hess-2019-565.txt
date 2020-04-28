@@ -1,0 +1,10 @@
+@Article{hess-2019-565,
+AUTHOR = {Zuo, G. and Luo, J. and Wang, N. and Lian, Y. and He, X.},
+TITLE = {Two-stage Variational Mode Decomposition and Support Vector Regression for Streamflow Forecasting},
+JOURNAL = {Hydrology and Earth System Sciences Discussions},
+VOLUME = {2019},
+YEAR = {2019},
+PAGES = {1--38},
+URL = {https://www.hydrol-earth-syst-sci-discuss.net/hess-2019-565/},
+DOI = {10.5194/hess-2019-565}
+}
