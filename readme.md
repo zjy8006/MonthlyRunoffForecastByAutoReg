@@ -19,15 +19,13 @@ hydro; signal preprocessing; surface water
 
 ## Description
 
-This data repository contains code and data for research article, namely, “Two-stage Variational Mode Decomposition and Support Vector Regression for Streamflow Forecasting”, which is currently under review for the journal _Hydrology and Earth System Sciences (HESS)_.
+This data repository contains code and data for the research article “_Two-stage Variational Mode Decomposition and Support Vector Regression for Streamflow Forecasting_”, which is currently under review for the journal _Hydrology and Earth System Sciences (HESS)_.
 
-The underlying data of this study is the monthly runoff data sets  (1953/01-2018/12) of Huaxian, Xianyang and Zhangjiashan stations, Wei River, China, which is organized in "_time_series_" directory.
+The underlying data of this study is the monthly runoff data sets (1953/01-2018/12) of Huaxian, Xianyang, and Zhangjiashan stations, Wei River, China, which is organized in "_time_series_" directory.
 
-The fundamental code for decomposing runoff data, deciding input predictors and output target, generating machine learning samples, building support vector regression (SVR) models and evaluating the model performance are organized in “_tools_” directory.
-The execution code for forecasting different runoff series using different decomposition algorithms (e.g., variational mode decomposition (VMD), ensemble empirical mode decomposition (EEMD), discrete wavelet transform (DWT), Singular spectrum analysis (SSA)  or non-decomposition-based (orig)) are organized in “_projects_” directory (e.g., “_huaxian_vmd/projects/_”).
+The fundamental code for decomposing runoff data, deciding input predictors and output target, generating machine learning samples, building support vector regression (SVR) models, and evaluating the model performance is organized in the “_tools_” directory. The execution code for forecasting different runoff series using different decomposition algorithms (e.g., variational mode decomposition (VMD), ensemble empirical mode decomposition (EEMD), discrete wavelet transform (DWT), Singular spectrum analysis (SSA) or non-decomposition-based (Orig)) are organized in “projects” directory (e.g., “_huaxian_vmd/projects/_”).
 
-
-To reproduce the results of this paper, follow the instructions given in [readme.md](/readme.md). Note that the same results demonstrated in this paper cannot be reproduced but similar results should be reproduced.
+To reproduce the results of this paper, follow the instructions given in readme.md. Note that the same results demonstrated in this paper cannot be reproduced but similar results should be reproduced.
 
 
 ## Open-source software
