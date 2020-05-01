@@ -174,7 +174,7 @@ The 'SVR' in [scikit-learn](https://scikit-learn.org/stable/) was used to build 
 
 ## Cite US
 
-* [BibTex](./hess-2019-565.txt)
+* [BibTex](./hess-2019-565.bib)
 * [EndNote](./hess-2019-565.ris)
   
 ## Reference
