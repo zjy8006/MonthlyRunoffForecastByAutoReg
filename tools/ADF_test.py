@@ -1,6 +1,8 @@
 from statsmodels.tsa.stattools import adfuller
 import pandas as pd 
 import matplotlib.pyplot as plt
+import os
+root = os.path.abspath(os.path.dirname("__file__"))
 
 def is_stationary(timeseries,confidence=0.95):
     """
@@ -50,9 +52,11 @@ def is_stationary(timeseries,confidence=0.95):
 
 
 
-# import os
-# root_path = os.path.dirname(os.path.abspath('__file__'))
-# data = pd.read_csv(root_path+'/Huaxian_vmd/data/VMD_TRAIN.csv')
-# orig = data['IMF3']
-# rs = is_stationary(orig)
-# print(rs)
+if __name__ == "__main__":
+    data = pd.read_csv(root+'/time_series/MonthlyRunoffWeiRiver.csv')
+    huaxian = data['Huaxian']
+    Xianyang = data['Xianyang']
+    Zhangjiashan = data['Zhangjiashan']
+    print(is_stationary(huaxian))
+    print(is_stationary(Xianyang))
+    print(is_stationary(Zhangjiashan))

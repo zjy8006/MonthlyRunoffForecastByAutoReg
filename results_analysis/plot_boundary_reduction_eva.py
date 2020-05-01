@@ -135,18 +135,18 @@ t_ap = [#with mix and shuffle and generate validation samples from appended deco
 ]
 
 labels = [
-    "EEMD-SVR(train)",
-    "EEMD-SVR(dev)",
-    "EEMD-SVR(test)",
-    "SSA-SVR(train)",
-    "SSA-SVR(dev)",
-    "SSA-SVR(test)",
-    "VMD-SVR(train)",
-    "VMD-SVR(dev)",
-    "VMD-SVR(test)",
-    "DWT-SVR(train)",
-    "DWT-SVR(dev)",
-    "DWT-SVR(test)",
+    "EEMD-SVR (cal)",
+    "EEMD-SVR (dev)",
+    "EEMD-SVR (test)",
+    "SSA-SVR (cal)",
+    "SSA-SVR (dev)",
+    "SSA-SVR (test)",
+    "VMD-SVR (cal)",
+    "VMD-SVR (dev)",
+    "VMD-SVR (test)",
+    "DWT-SVR (cal)",
+    "DWT-SVR (dev)",
+    "DWT-SVR (test)",
 ]
 
 all_datas = [
@@ -157,10 +157,10 @@ all_datas = [
 ]
 
 fig_index=[
-    "(a)Scheme 1",
-    "(b)Scheme 2",
-    "(c)Scheme 3",
-    "(d)Scheme 4",
+    "(a) Scheme 1",
+    "(b) Scheme 2",
+    "(c) Scheme 3",
+    "(d) Scheme 4",
     ]
 
 face_colors={

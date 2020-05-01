@@ -122,7 +122,7 @@ face_colors={
 
 labels = [ 'EEMD-SVR','EEMD-SVR-A','SSA-SVR','SSA-SVR-A', 'DWT-SVR', 'DWT-SVR-A', 'VMD-SVR','VMD-SVR-A']
 y_labels = [
-    r"$NSE$", r"$NRMSE(10^8m^3)$", r"$PPTS(5)(\%)$", r"$Time(s)$"
+    r"$NSE$", r"$NRMSE\ (10^8m^3)$", r"$PPTS(5)\ (\%)$", r"$Time\ (s)$"
 ]
 x = list(range(len(nse_data)))
 plt.figure(figsize=(7.48, 3.48))

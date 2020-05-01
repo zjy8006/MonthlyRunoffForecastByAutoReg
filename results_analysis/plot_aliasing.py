@@ -31,7 +31,7 @@ plt.plot(freqs,abs(fft(huxian_vmd['IMF8'].values)),c='b',lw=0.8)
 plt.ylabel('Amplitude')
 
 plt.subplot(2,2,3)
-plt.xlabel('Time(month)')
+plt.xlabel('Time (month)')
 plt.ylabel(r'$IMF_9$')
 plt.plot(huxian_vmd['IMF9'],color='b',label='',linewidth=0.8)
 
@@ -43,7 +43,7 @@ plt.vlines(x=0.025,ymin=30,ymax=95,lw=1.5,colors='r',zorder=1)
 plt.hlines(y=30,xmin=-0.025,xmax=0.025,lw=1.5,colors='r',zorder=1)
 plt.hlines(y=95,xmin=-0.025,xmax=0.025,lw=1.5,colors='r',zorder=1)
 plt.ylabel('Amplitude')
-plt.xlabel('Frequency(1/month)')
+plt.xlabel('Frequency (1/month)')
 
 plt.tight_layout()
 plt.savefig(graphs_path+'/Fig.5.aliasing of Huaxian VMD.eps',format='EPS',dpi=2000)

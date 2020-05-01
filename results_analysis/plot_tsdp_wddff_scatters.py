@@ -285,9 +285,9 @@ colors0=['tab:red','tab:green','tab:orange','tab:cyan','tab:purple','tab:gray','
 colors=['tab:orange','tab:cyan','tab:purple','tab:gray','tab:blue']
 zorders0=[0,1,2,3,4,5,6]
 zorders=[2,3,5,4,6]
-models0=['ARMA','SVR','WDDFF(BCMODWT-SVR)','TSDP(EEMD-SVR)','TSDP(SSA-SVR)','TSDP(DWT-SVR)','TSDP(VMD-SVR)']
-models=['WDDFF(BCMODWT-SVR)','TSDP(EEMD-SVR)','TSDP(SSA-SVR)','TSDP(DWT-SVR)','TSDP(VMD-SVR)']
-titles=['(a)1-month ahead','(b)3-month ahead','(c)5-month ahead','(d)7-month ahead']
+models0=['ARMA','SVR','WDDFF (BCMODWT-SVR)','TSDP (EEMD-SVR)','TSDP (SSA-SVR)','TSDP (DWT-SVR)','TSDP (VMD-SVR)']
+models=['WDDFF (BCMODWT-SVR)','TSDP (EEMD-SVR)','TSDP (SSA-SVR)','TSDP (DWT-SVR)','TSDP (VMD-SVR)']
+titles=['(a) 1-month ahead','(b) 3-month ahead','(c) 5-month ahead','(d) 7-month ahead']
 plt.figure(figsize=(7.48,8.05))
 for i in range(len(h_labels)):
     plt.subplot(2,2,i+1,aspect='equal')
@@ -296,11 +296,11 @@ for i in range(len(h_labels)):
     plt.xlim([h_xymin,h_xymax])
     plt.ylim([h_xymin,h_xymax])
     if i==len(h_labels)-1 or i==len(h_labels)-2:
-        plt.xlabel('Predictions(' + r'$10^8m^3$' +')')
+        plt.xlabel('Predictions (' + r'$10^8m^3$' +')')
     else:
         plt.xticks([])
     if i in [0,2]:
-        plt.ylabel('Records(' + r'$10^8m^3$' + ')', )
+        plt.ylabel('Records (' + r'$10^8m^3$' + ')', )
     else:
         plt.yticks([])
     for j in range(len(h_labels[i])):
@@ -314,12 +314,51 @@ for i in range(len(h_labels)):
         plt.legend(
                     loc='upper left',
                     # bbox_to_anchor=(0.08,1.01, 1,0.101),
-                    bbox_to_anchor=(0.012,1.15),
+                    bbox_to_anchor=(0.001,1.15),
                     ncol=6,
                     shadow=False,
                     frameon=True,
                     )
 plt.subplots_adjust(left=0.06, bottom=0.05, right=0.99,top=0.94, hspace=0.02, wspace=0.02)
+plt.savefig(graphs_path+'Scatter plots for TSDP and WDDFF at Huaxian.eps',format='EPS',dpi=2000)
+plt.savefig(graphs_path+'Scatter plots for TSDP and WDDFF at Huaxian.tif',format='TIFF',dpi=500)
+plt.savefig(graphs_path+'Scatter plots for TSDP and WDDFF at Huaxian.pdf',format='PDF',dpi=1200)
+
+
+models0=['ARMA','SVR','BCMODWT-SVR','EEMD-SVR','SSA-SVR','DWT-SVR','VMD-SVR']
+plt.figure(figsize=(7.48,6.6))
+for i in range(len(h_labels)):
+    plt.subplot(2,2,i+1,aspect='equal')
+    plt.text(24,1,titles[i])
+    plt.plot([h_xymin,h_xymax], [h_xymin,h_xymax], '-', color='black', label='Ideal fit',)
+    plt.xlim([h_xymin,h_xymax])
+    plt.ylim([h_xymin,h_xymax])
+    if i==len(h_labels)-1 or i==len(h_labels)-2:
+        plt.xlabel('Predictions (' + r'$10^8m^3$' +')')
+    else:
+        plt.xticks([])
+    if i in [0,2]:
+        plt.ylabel('Records (' + r'$10^8m^3$' + ')', )
+    else:
+        plt.yticks([])
+    for j in range(len(h_labels[i])):
+        if i==0:
+            plt.scatter(preds[h_labels[i][j]], records[h_labels[i][j]],c=colors0[j],label=models0[j],marker=markers0[j],zorder=zorders0[j])
+            plt.plot(xx, linear_list[h_labels[i][j]], '--',c=colors0[j],label=models0[j])
+        else:
+            plt.scatter(preds[h_labels[i][j]], records[h_labels[i][j]],c=colors[j],label=models[j],marker=markers[j],zorder=zorders[j])
+            plt.plot(xx, linear_list[h_labels[i][j]], '--',c=colors[j],label=models[j])
+    if i==0:
+        plt.legend(
+                    loc='upper left',
+                    # bbox_to_anchor=(2.03,0.8, 1,0.5),
+                    bbox_to_anchor=(2.03,1.012),
+                    ncol=1,
+                    shadow=False,
+                    frameon=True,
+                    labelspacing=4.1,
+                    )
+plt.subplots_adjust(left=0.06, bottom=0.06, right=0.86,top=0.99, hspace=0.02, wspace=0.02)
 plt.savefig(graphs_path+'Fig.15.Scatter plots for TSDP and WDDFF at Huaxian.eps',format='EPS',dpi=2000)
 plt.savefig(graphs_path+'Fig.15.Scatter plots for TSDP and WDDFF at Huaxian.tif',format='TIFF',dpi=500)
 plt.savefig(graphs_path+'Fig.15.Scatter plots for TSDP and WDDFF at Huaxian.pdf',format='PDF',dpi=1200)

@@ -474,7 +474,7 @@ face_colors={
 }
 x = list(range(len(labels)))
 ylabels=[
-    r"$NSE$",r"$NRMSE$",r"$PPTS(5)(\%)$",
+    r"$NSE$",r"$NRMSE\ (10^8m^3)$",r"$PPTS(5)\ (\%)$",
 ]
 x_s=[-1.1,-1.1,-1.1]
 y_s=[0.85,1.55,70]

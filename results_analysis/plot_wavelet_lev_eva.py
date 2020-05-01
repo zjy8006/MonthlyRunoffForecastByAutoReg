@@ -31,14 +31,14 @@ for wave in wavelet:
     train_nse_dict[wave] = train_nse
     dev_nse_dict[wave] = dev_nse
     nse_dict[wave]=nse
-y=['1T','1D','2T','2D','3T','3D','4T','4D']
+y=['Cal, 1','Dev, 1','Cal, 2','Dev, 2','Cal, 3','Dev, 3','Cal, 4','Dev, 4']
 train_nse_df = pd.DataFrame(train_nse_dict,index=level)
 dev_nse_df = pd.DataFrame(dev_nse_dict,index=level)
 nse_df = pd.DataFrame(nse_dict,index=y)
 print(train_nse_df)
 print(dev_nse_df)
 print(nse_df)
-fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(3.48,3.2))
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(3.48,3.1))
 max_v = round(max(nse_df.max(axis=1)),1)
 min_v = round(min(nse_df.min(axis=1)),1)
 interval=round((max_v-min_v)/4,1)
@@ -50,12 +50,12 @@ ax.set_xticks(np.arange(0.5,len(wavelet)+0.5,1))
 ax.set_yticks(np.arange(0.5,len(y)+0.5,1))
 ax.set_xticklabels(wavelet,rotation=45)
 ax.set_yticklabels(y[::-1])
-cb_ax = fig.add_axes([0.84, 0.148, 0.05, 0.807])#[left,bottom,width,height]
+cb_ax = fig.add_axes([0.84, 0.151, 0.05, 0.788])#[left,bottom,width,height]
 cbar = fig.colorbar(im, cax=cb_ax)
 cbar.set_label(r'$NSE$')
 cbar.set_ticks(np.arange(0, 1.1, 0.2))
 # cbar.set_ticks(np.arange(min_v,max_v+0.1, interval))
-fig.subplots_adjust(bottom=0.11, top=0.99, left=0.08, right=0.82,wspace=0.3, hspace=0.1)
+fig.subplots_adjust(bottom=0.1, top=0.99, left=0.12, right=0.82,wspace=0.3, hspace=0.1)
 plt.savefig(root_path+'/graphs/Fig.8 NSE of MODWT-SVR with different wavelets and levels.tif',format='TIFF',dpi=1200)
 plt.savefig(root_path+'/graphs/Fig.8 NSE of MODWT-SVR with different wavelets and levels.pdf',format='PDF',dpi=1200)
 plt.show()

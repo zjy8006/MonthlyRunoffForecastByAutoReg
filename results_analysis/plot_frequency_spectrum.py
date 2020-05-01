@@ -38,7 +38,7 @@ for i in range(len(h_v_cols)):
     plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
     plt.plot(freqs,abs(fft(subsignal.values)),c='b',lw=0.8)
     if i==len(h_v_cols)-1 or i==len(h_v_cols)-2:
-        plt.xlabel('Frequency(1/month)')
+        plt.xlabel('Frequency (1/month)')
     else:
         plt.xticks([])
     # if i in [0,2,4,6]:
@@ -77,7 +77,7 @@ for i in range(len(h_e_cols)):
     ax.plot(freqs,abs(fft(subsignal.values)),c='b',lw=0.8)
     if i==len(h_e_cols)-1:
         ax.text(0.49,y[i],titles[i])
-        ax.set_xlabel('Frequency(1/month)')
+        ax.set_xlabel('Frequency (1/month)')
     else:
         ax.set_xlim(-0.55,0.75)
         ax.text(0.55,y[i],titles[i])
@@ -107,7 +107,7 @@ for i in range(len(h_s_cols)):
     plt.xlim(-0.55,0.6)
     plt.plot(freqs,abs(fft(subsignal.values)),c='b',lw=0.8)
     if i==len(h_s_cols)-1 or i==len(h_s_cols)-2:
-        plt.xlabel('Frequency(1/month)')
+        plt.xlabel('Frequency (1/month)')
     else:
         plt.xticks([])
     plt.ylabel('Amplitude')
@@ -140,7 +140,7 @@ for i in range(len(h_d_cols)):
     if i==len(h_d_cols)-1:
         ax.set_xlim(-0.55,0.55)
         ax.text(0.49,y[i],titles[i])
-        ax.set_xlabel('Frequency(1/month)')
+        ax.set_xlabel('Frequency (1/month)')
     else:
         ax.set_xlim(-0.55,0.6)
         ax.text(0.45,y[i],titles[i])
@@ -259,7 +259,7 @@ for i in range(len(axs)):
         if j==0:
             ax.set_ylabel('Amplitude')
         if i==len(axs)-1:
-            ax.set_xlabel('Frequency(1/month)')
+            ax.set_xlabel('Frequency (1/month)')
         # else:
         #     ax.set_xticks([])
         ax.plot(freqs,abs(fft(subsignal.values)),c=colors[i],lw=0.8,label=signal_labels[i][j])

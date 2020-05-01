@@ -33,7 +33,7 @@ modwt_corrs = modwt_train.corr(method="pearson")
 
 
 corrs=[abs(eemd_corrs),abs(ssa_corrs),abs(vmd_corrs),abs(dwt_corrs),abs(modwt_corrs)]
-titles=["EEMD","SSA","VMD","DWT(db10-2)",'BCMODWT(db1-4)']
+titles=["EEMD","SSA","VMD","DWT (db10-2)",'BCMODWT (db1-4)']
 # plt.figure(figsize=(3.54,3.4))
 # for i in range(len(corrs)):
 #     plt.subplot(2,2,i+1)
@@ -178,7 +178,7 @@ cbar = fig.colorbar(im, cax=cb_ax)
 cbar.set_ticks(np.arange(0, 1.1, 0.5))
 cbar.set_label(r"Correlation")
 # cbar.set_ticklabels(['low', 'medium', 'high'])
-plt.savefig(graphs_path+"Fig.9.Pearson corr of Huaxian.tif",format="TIFF",dpi=1200)
+plt.savefig(graphs_path+"Fig.9.Pearson corr of Huaxian.tif",format="TIFF",dpi=500)
 plt.savefig(graphs_path+"Fig.9.Pearson corr of Huaxian.pdf",format="PDF",dpi=1200)
 plt.show()
 

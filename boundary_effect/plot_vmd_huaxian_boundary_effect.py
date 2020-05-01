@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
 plt.rcParams['font.size'] = 6
 import os
 root_path = os.path.dirname(os.path.abspath('__file__'))
@@ -8,6 +9,15 @@ if not os.path.exists(graphs_path):
     os.makedirs(graphs_path)
 
 time = pd.read_csv(root_path+'/time_series/MonthlyRunoffWeiRiver.csv')['Time']
+time = time.values
+time = [datetime.strptime(t,'%Y/%m') for t in time]
+time = [t.strftime('%b %Y') for t in time]
+print(time)
+
+
+
+
+
 # CHECK 1: is VMD shift-invariant?
 # If yes, any shifted copy of an IMF from a VMD decomposition, similar to a
 # shifted copy of the original time series, should be maintained.
@@ -71,7 +81,9 @@ x1_imf1_1_790 = x1_imf['IMF1'][0:789]
 x1_imf1_1_790 = x1_imf1_1_790.reset_index(drop=True)
 
 err = x0_imf1_2_791-x1_imf1_1_790
-
+# err_df = pd.DataFrame(err.values,columns=['err'])
+# print(err)
+err.to_csv(root_path+'/results_analysis/results/shift_variance_err.csv')
 
 x_1_552_imf1 = x_1_552_imf['IMF1']
 x_1_791_imf1 = x_1_791_imf['IMF1']
@@ -79,46 +91,57 @@ x_1_792_imf1 = x_1_792_imf['IMF1']
 
 err_append_one = x_1_792_imf1[0:790]-x_1_791_imf1[0:790]
 err_append_several = x_1_792_imf1[0:551]-x_1_552_imf1[0:551]
-
+err_append_one_df = pd.DataFrame(err_append_one,columns=['err'])
+err_append_several_df = pd.DataFrame(err_append_several,columns=['err'])
+print(err_append_one_df)
+print(err_append_several_df)
+err_append_one.to_csv(root_path+'/results_analysis/results/err_append_one.csv')
+err_append_several.to_csv(root_path+'/results_analysis/results/err_append_several.csv')
 
 plt.figure(figsize=(7.48,6))
 plt.subplot(4,2,1)
 plt.text(0,11,'(a)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
-plt.plot(x0_imf1_2_791,c='b',label=r'$IMF_{1}[2:791]$ of $x_{0}$')
-plt.plot(x1_imf1_1_790,c='g',label=r'$IMF_{1}[1:790]$ of $x_{1}$')
-plt.xlabel('Time('+time[1]+'-'+time[790]+')')
+plt.plot(x0_imf1_2_791,c='b',label=r'$IMF_{1}(2:791)$ of $x_{0}$')
+plt.plot(x1_imf1_1_790,c='g',label=r'$IMF_{1}(1:790)$ of $x_{1}$')
+plt.xlabel('Time (From '+time[1]+' to '+time[790]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.legend()
 plt.subplot(4,2,2)
 plt.text(750,-0.3,'(b)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
-plt.plot(err,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,label=r'Error between $IMF_{1}[2:791]$ of $x_{0}$ and $IMF_{1}[1:790]$ of $x_{1}$')
-plt.xlabel('Time('+time[1]+'-'+time[790]+')')
+shift_var=plt.plot(err,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,
+label=R'''Error between  $IMF_{1}(2:791)$ 
+of $x_{0}$ and  $IMF_{1}(1:790)$ of $x_{1}$''')
+plt.xlabel('Time (From '+time[1]+' to '+time[790]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.legend()
 plt.subplot(4,2,3)
 plt.text(0,11,'(c)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
 plt.plot(x_1_791_imf1,c='b',label=r'$IMF_{1}$ of $x_{1-791}$')
 plt.plot(x_1_792_imf1,c='g',label=r'$IMF_{1}$ of $x_{1-792}$')
-plt.xlabel('Time('+time[0]+'-'+time[791]+')')
+plt.xlabel('Time (From '+time[0]+' to '+time[791]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.legend()
 plt.subplot(4,2,4)
 plt.text(753,0.07,'(d)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
-plt.plot(err_append_one,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,label=r'Error between  $IMF_{1}[1:791]$ of $x_{1-791}$ and $IMF_{1}[1:791]$ of $x_{1-792}$')
-plt.xlabel('Time('+time[0]+'-'+time[790]+')')
+plt.plot(err_append_one,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,
+label=R'''Error between  $IMF_{1}(1:791)$ of 
+$x_{1-791}$ and  $IMF_{1}(1:791)$ of $x_{1-792}$''')
+plt.xlabel('Time (From '+time[0]+' to '+time[790]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
-plt.legend()
+plt.legend(loc='lower left')
 plt.subplot(4,2,5)
 plt.text(0,11,'(e)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
 plt.plot(x_1_552_imf1,c='b',label=r'$IMF_{1}$ of $x_{1-552}$')
 plt.plot(x_1_792_imf1,c='g',label=r'$IMF_{1}$ of $x_{1-792}$')
-plt.xlabel('Time('+time[0]+'-'+time[791]+')')
+plt.xlabel('Time (From '+time[0]+' to '+time[791]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.legend()
 plt.subplot(4,2,6)
-plt.text(0,-0.19,'(f)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
-plt.plot(err_append_several,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,label=r'Error between  $IMF_{1}[1:552]$ of $x_{1-552}$ and $IMF_{1}[1:552]$ of $x_{1-792}$')
-plt.xlabel('Time('+time[0]+'-'+time[551]+')')
+plt.text(0,-0.10,'(f)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
+plt.plot(err_append_several,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,
+label=R'''Error between  $IMF_{1}(1:552)$ of 
+$x_{1-552}$ and  $IMF_{1}(1:552)$ of $x_{1-792}$''')
+plt.xlabel('Time (From '+time[0]+' to '+time[551]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.legend(ncol=2)
 
@@ -147,7 +170,8 @@ plt.text(553,11.7,'(g)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistl
 t=list(range(553,793))
 plt.plot(t,seq_val_dec['IMF1'],c='b',label=r"$IMF_1$ of sequential validation decomposition")
 plt.plot(t,concurrent_dec,c='g',label=r"$IMF_1$ of concurrent validation decomposition")
-plt.xlabel("Time(1999/01-2018/12)")
+# plt.xlabel("Time(1999/01-2018/12)")
+plt.xlabel('Time (From '+time[552]+' to '+time[791]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 # plt.xlim([550,560])
 plt.ylim([0,14])
@@ -159,7 +183,7 @@ print('vmd_full=\n{}'.format(vmd_full))
 con_val = vmd_full[vmd_full.shape[0]-240:]
 con_val = con_val.reset_index(drop=True)
 con_val_dec_sum = con_val.sum(axis=1)
-plt.xlabel("Time(1999/01-2018/12)")
+plt.xlabel('Time (From '+time[552]+' to '+time[791]+')')
 plt.ylabel(r"Runoff($10^8m^3$)")
 plt.ylim(-1.5,50)
 plt.plot(t,orig,c='b',label=r"Validation set")

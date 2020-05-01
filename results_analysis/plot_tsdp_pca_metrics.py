@@ -232,15 +232,15 @@ plt.figure(figsize=(7.48,2.0))
 for i in range(len(nse_data)):
     plt.subplot(1,4,i+1)
     if i==0:
-        plt.text(-0.5,0.8,fig_id[i]+models[i])
+        plt.text(-0.5,0.8,fig_id[i]+' '+models[i])
     else:
-        plt.text(11,-1.15,fig_id[i]+models[i])
+        plt.text(11,-1.15,fig_id[i]+' '+models[i])
     if i in [0]:
         plt.ylabel(r'$NSE$')
     else:
         plt.yticks([])
     plt.ylim(-1.2,1.1)
-    plt.xlabel('Number of reduced predictors')
+    plt.xlabel('Number of excluded predictors')
     # if i==len(nse_data)-1 or i==len(nse_data)-2:
     #     plt.xticks(np.arange(0,17,1))
     #     plt.xlabel('Number of reduced predictors')
