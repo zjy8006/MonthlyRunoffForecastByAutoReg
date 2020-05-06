@@ -9,7 +9,7 @@ def is_stationary(timeseries,confidence=0.95):
     Judge a time series is stationary or non-stationary using adf test
     ADF test whether a time series has unit root. If a time series has
     unit root, it is non-stationary. The null hypothesis is the given time
-    series has unit root (non-stationary).
+    series has unit root (i.e.,non-stationary).
     An example of adf test result:
     (-7.460873875968257, 5.3582687026296535e-11, 33, 5226, 
     {'1%': -3.4316019163653446, '5%': -2.862093216924214, '10%': -2.5670644771344784}, 

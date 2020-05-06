@@ -9,6 +9,10 @@ import sys
 sys.path.append(root_path)
 from tools.SSA_tool import SSA_decomposition
 
+save_path = root_path+'/boundary_effect/ssa-decompositions-huaxian/'
+if not os.path.exists(save_path):
+    os.makedirs(save_path)
+
 runoff = pd.read_csv(root_path+'/time_series/MonthlyRunoffWeiRiver.csv')
 x = runoff['Huaxian']
 time = runoff['Time']
@@ -47,6 +51,8 @@ print(x1)
 x1=x1.reset_index(drop=True)
 x0_dec = SSA_decomposition(time_series=x0,window=12)
 x1_dec = SSA_decomposition(time_series=x1,window=12)
+x0_dec.to_csv(save_path+'x0_dec.csv')
+x1_dec.to_csv(save_path+'x1_dec.csv')
 x0_dec_trend_1_790 = x0_dec['Trend'][1:791]
 x0_dec_trend_1_790 = x0_dec_trend_1_790.reset_index(drop=True)
 x1_dec_trend_0_789 = x1_dec['Trend'][0:790]
@@ -92,6 +98,8 @@ x_0_790=x[0:791];
 x_0_791=x[0:792];
 x_0_790_dec = SSA_decomposition(time_series=x_0_790,window=12)
 x_0_791_dec = SSA_decomposition(time_series=x_0_791,window=12)
+x_0_790_dec.to_csv(save_path+'/x_1_791_dec.csv')
+x_0_791_dec.to_csv(save_path+'/x_1_792_dec.csv')
 plt.figure(figsize=(7.48,3.48))
 plt.subplot(1,2,1)
 plt.xlabel('Time('+time[0]+'-'+time[791]+')')
@@ -112,6 +120,7 @@ plt.tight_layout()
 # Check 3: append several data points
 x_0_551=x[0:552];
 x_0_551_dec = SSA_decomposition(time_series=x_0_551,window=12)
+x_0_551_dec.to_csv(save_path+'/x_1_552_dec.csv')
 plt.figure(figsize=(7.48,3.48))
 plt.subplot(1,2,1)
 plt.xlabel('Time('+time[0]+'-'+time[791]+')')

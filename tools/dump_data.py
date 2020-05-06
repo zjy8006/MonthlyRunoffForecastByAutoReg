@@ -134,7 +134,7 @@ def dump_train_dev_test_to_csv(
             axis=1))
     results.to_csv(path)
 
-def dum_pred_results(path,train_y,train_predictions,dev_y,dev_predictions,test_y,test_predictions,time_cost=None):
+def dum_pred_results(path,train_y=None,train_predictions=None,dev_y=None,dev_predictions=None,test_y=None,test_predictions=None,time_cost=None):
     """ 
     Dump real records (labels) and predictions as well as evaluation criteria (metrix R2,RMSE,MAE,MAPE,PPTS,time_cost) to csv.
     Args:
@@ -152,30 +152,49 @@ def dum_pred_results(path,train_y,train_predictions,dev_y,dev_predictions,test_y
     """
     logger.info('Dump records, predictions and evaluation criteria...')
     logger.info('Compute Nash-Sutcliffe efficiency (NSE)...')
-    train_nse = r2_score(train_y, train_predictions)
-    dev_nse = r2_score(dev_y, dev_predictions)
-    test_nse = r2_score(test_y, test_predictions)
-    logger.info('Compute Mean Square Error (MSE)...')
-    train_mse = mean_squared_error(y_true=train_y,y_pred=train_predictions)
-    dev_mse = mean_squared_error(y_true=dev_y,y_pred=dev_predictions)
-    test_mse = mean_squared_error(y_true=test_y,y_pred=test_predictions)
-    logger.info('Compute normalized mean square error (NRMSE)...')
-    train_nrmse = math.sqrt(mean_squared_error(train_y, train_predictions))/(sum(train_y)/len(train_y))
-    dev_nrmse = math.sqrt(mean_squared_error(dev_y, dev_predictions))/(sum(dev_y)/len(dev_y))
-    test_nrmse = math.sqrt(mean_squared_error(test_y, test_predictions))/(sum(test_y)/len(test_y))
-    logger.info('Compute mean absolute error (MAE)...')
-    train_mae = mean_absolute_error(train_y, train_predictions)
-    dev_mae = mean_absolute_error(dev_y, dev_predictions)
-    test_mae = mean_absolute_error(test_y, test_predictions)
-    logger.info('Compute mean absolute percentage error (MAPE)...')
-    train_mape=np.mean(np.abs((train_y - train_predictions) / train_y)) * 100
-    dev_mape=np.mean(np.abs((dev_y - dev_predictions) / dev_y)) * 100
-    test_mape=np.mean(np.abs((test_y - test_predictions) / test_y)) * 100
-    logger.info('Compute peak percentage of threshold statistic (PPTS)...')
-    train_ppts = PPTS(train_y,train_predictions,5)
-    dev_ppts = PPTS(dev_y,dev_predictions,5)
-    test_ppts = PPTS(test_y,test_predictions,5)
-    logger.info('Dumping the model results.')
+    if train_y==None or train_predictions==None:
+        train_nse = None
+        train_mse = None
+        train_nrmse = None
+        train_mae = None
+        train_mape = None
+    else:
+        train_nse = r2_score(train_y, train_predictions)
+        train_mse = mean_squared_error(y_true=train_y,y_pred=train_predictions)
+        train_nrmse = math.sqrt(mean_squared_error(train_y, train_predictions))/(sum(train_y)/len(train_y))
+        train_mae = mean_absolute_error(train_y, train_predictions)
+        train_mape=np.mean(np.abs((train_y - train_predictions) / train_y)) * 100
+        train_ppts = PPTS(train_y,train_predictions,5)
+
+    if dev_y==None or dev_predictions==None:
+        dev_nse = None
+        dev_mse = None
+        dev_nrmse = None
+        dev_mae = None
+        dev_mape = None
+    else:
+        dev_nse = r2_score(dev_y, dev_predictions)
+        dev_mse = mean_squared_error(y_true=dev_y,y_pred=dev_predictions)
+        dev_nrmse = math.sqrt(mean_squared_error(dev_y, dev_predictions))/(sum(dev_y)/len   (dev_y))
+        dev_mae = mean_absolute_error(dev_y, dev_predictions)
+        dev_mape=np.mean(np.abs((dev_y - dev_predictions) / dev_y)) * 100
+        dev_ppts = PPTS(dev_y,dev_predictions,5)
+
+    if test_y==None or test_predictions==None:
+        test_nse = None
+        test_mse = None
+        test_nrmse = None
+        test_mae = None
+        test_mape = None
+
+    else:
+        test_nse = r2_score(test_y, test_predictions)
+        test_mse = mean_squared_error(y_true=test_y,y_pred=test_predictions)
+        test_nrmse = math.sqrt(mean_squared_error(test_y, test_predictions))/(sum(test_y)   /len(test_y))
+        test_mae = mean_absolute_error(test_y, test_predictions)
+        test_mape=np.mean(np.abs((test_y - test_predictions) / test_y)) * 100
+        test_ppts = PPTS(test_y,test_predictions,5)
+    
     dump_train_dev_test_to_csv(
             path=path,
             train_y=train_y,
