@@ -74,14 +74,14 @@ writetable(x1_dec, [save_path,'x1_imf.csv']);
 
 figure('Name','Test shift-invariancy for VMD');
 hold on
-x0_imf1_2_791=plot(x0_imf(2:791,1),'b');
+x0_imf1_2_791=plot(x0_dec.IMF1(2:791,1),'b');
 label0=strcat("IMF1 of x0(",time(2),"-",time(791),")");
-x1_imf1_1_790=plot(x1_imf(1:790,1),'r');
+x1_imf1_1_790=plot(x1_dec.IMF1(1:790,1),'r');
 label1=strcat("IMF1 of x1(",time(2),"-",time(791),")");
 legend([x0_imf1_2_791;x1_imf1_1_790],label0,label1,'Location','northwest');
 hold off
 
-err = x0_imf(2:791,1)-x1_imf(1:790,1);
+err = x0_dec.IMF1(2:791,1)-x1_dec.IMF1(1:790,1);
 figure('Name','error between x0 and x1');
 scatter(linspace(1,790,790),err,'Marker','o');
 
@@ -129,16 +129,16 @@ writetable(x_1_792_dec, [save_path,'x_1_792_imf.csv']);
 
 figure('Name','Test sensitivity of adding additional data point');
 hold on
-x_1_792_imf1=plot(x_1_792_imf(1:792,1),'b');
+x_1_792_imf1=plot(x_1_792_dec.IMF1(1:792,1),'b');
 label00=strcat("IMF1 of x\_1\_792(",time(1),"-",time(792),")");
-x_1_791_imf1=plot(x_1_791_imf(1:791,1),'r');
+x_1_791_imf1=plot(x_1_791_dec.IMF1(1:791,1),'r');
 label11=strcat("IMF1 of x\_1\_791(",time(1),"-",time(791),")");
 legend([x_1_792_imf1;x_1_791_imf1],label00,label11,'Location','northwest');
 hold off
 
 % Plot error (which should be a straight line of 0s if appending an 
 % additional observation has on impact on VMD)
-err_append = x_1_792_imf(1:791,1)-x_1_791_imf(1:791,1)
+err_append = x_1_792_dec.IMF1(1:791,1)-x_1_791_dec.IMF1(1:791,1)
 figure('Name','error between x_1_792_imf(1:791,1) and x_1_791_imf(1:791,1)');
 scatter(linspace(1,791,791),err_append,'Marker','o')
 
@@ -159,16 +159,16 @@ writetable(x_1_552_dec, [save_path,'x_1_552_imf.csv']);
 % Plot IMF for x_1_552 and x_1_792
 figure('Name','Test sensitivity of adding several additional data points');
 hold on
-x_1_792_imf1=plot(x_1_792_imf(1:792,1),'b');
+x_1_792_imf1=plot(x_1_792_dec.IMF1(1:792,1),'b');
 label00=strcat("IMF1 of x\_1\_792(",time(1),"-",time(792),")");
-x_1_552_imf1=plot(x_1_552_imf(1:552,1),'r');
+x_1_552_imf1=plot(x_1_552_dec.IMF1(1:552,1),'r');
 label11=strcat("IMF1 of x\_1\_552(",time(1),"-",time(552),")");
 legend([x_1_792_imf1;x_1_552_imf1],label00,label11,'Location','northwest');
 hold off
 
 % Plot error (which should be a straight line of 0s if appending several
 % additional observations has no impact on VMD)
-err_append_several = x_1_552_imf(1:552,1)-x_1_792_imf(1:552,1);
+err_append_several = x_1_552_dec.IMF1(1:552,1)-x_1_792_dec.IMF1(1:552,1);
 figure('Name','error between x_1_552_imf(1:552,1) and x_1_792_imf(1:552,1)');
 scatter(linspace(1,552,552),err_append_several,'Marker','o');
 

@@ -202,7 +202,7 @@ hold off
 
 % Plot error (which should be a straight line of 0s if appending several
 % additional observations has no impact on EEMD)
-err_append_several = x_1_552_imf(1:552,1)-x_1_792_imf(1:552,1);
+err_append_several = x_1_552_dec.IMF1(1:552,1)-x_1_792_dec.IMF1(1:552,1);
 figure('Name','error between x_1_552_imf(1:552,1) and x_1_792_imf(1:552,1)');
 scatter(linspace(1,552,552),err_append_several,'Marker','o');
 
