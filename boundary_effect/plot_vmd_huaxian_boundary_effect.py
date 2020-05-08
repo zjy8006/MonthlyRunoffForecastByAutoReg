@@ -1,5 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+from distutils.version import LooseVersion
+from scipy.stats import norm
+from sklearn.neighbors import KernelDensity
 from datetime import datetime
 plt.rcParams['font.size'] = 6
 import os
@@ -12,7 +16,7 @@ time = pd.read_csv(root_path+'/time_series/MonthlyRunoffWeiRiver.csv')['Time']
 time = time.values
 time = [datetime.strptime(t,'%Y/%m') for t in time]
 time = [t.strftime('%b %Y') for t in time]
-print(time)
+# print(time)
 
 
 
@@ -164,7 +168,7 @@ t_t=list(range(1,553))
 
 orig = (vmd_full['ORIG'].iloc[vmd_full.shape[0]-240:]).values
 concurrent_dec = (vmd_full['IMF1'].iloc[vmd_full.shape[0]-240:]).values
-err = (seq_val_dec['IMF1']).values - concurrent_dec
+con_seq_val_error = (seq_val_dec['IMF1']).values - concurrent_dec
 plt.subplot(4,2,7)
 plt.text(553,11.7,'(g)',fontsize=7,fontweight='bold',bbox=dict(facecolor='thistle', alpha=0.25))
 t=list(range(553,793))
@@ -189,12 +193,39 @@ plt.ylim(-1.5,50)
 plt.plot(t,orig,c='b',label=r"Validation set")
 plt.plot(t,con_val_dec_sum,c='black',label=r"Summation of concurrent validation decompositions")
 plt.plot(t,seq_val_dec_sum,c='g',label=r"Summation of sequential validation decompositions")
-# plt.plot(t,err,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,label=r'Error between sequentially and concurrently decomposed $IMF_1$')
+# plt.plot(t,con_seq_val_error,'o',markerfacecolor='w',markeredgecolor='r',markersize=4.5,label=r'Error between sequentially and concurrently decomposed $IMF_1$')
 plt.legend()
 plt.subplots_adjust(left=0.066, bottom=0.06, right=0.99,top=0.99, hspace=0.35, wspace=0.2)
 # plt.tight_layout()
 plt.savefig(graphs_path+'/Boundary effect of VMD IMF1 at Huaxian.eps',format='EPS',dpi=2000)
 plt.savefig(graphs_path+'/Boundary effect of VMD IMF1 at Huaxian.pdf',format='PDF',dpi=1200)
+
+
+
+plt.figure(figsize=(3.54,3.54))
+ax1 = plt.subplot(2,1,1)
+err_append_several = pd.DataFrame(err_append_several.values,columns=[r'Cal errors for VMD $IMF_{1}$'])
+err_append_several.plot(kind='kde',color='purple',linewidth=2,ax=ax1)
+# plt.hist(err_append_one, 50, density=True,log=True,)
+plt.xlabel('Error')
+plt.ylabel('Density')
+plt.legend(loc='upper left')
+ax2 = plt.subplot(2,1,2)
+con_seq_val_error = pd.DataFrame(con_seq_val_error,columns=[r'Val errors for VMD $IMF_{1}$'])
+con_seq_val_error.plot(kind='kde',color='purple',linewidth=2,ax=ax2)
+plt.xlabel('Error')
+plt.ylabel('Density')
+plt.legend(loc='upper left')
+plt.tight_layout()
+plt.savefig(root_path+'/graphs/Error distribution of VMD IMF1 at Huaxian.eps',format='EPS',dpi=2000)
+plt.savefig(root_path+'/graphs/Error distribution of VMD IMF1 at Huaxian.pdf',format='PDF',dpi=1200)
+plt.savefig(root_path+'/graphs/Error distribution of VMD IMF1 at Huaxian.tif',format='TIFF',dpi=500)
+
+
+
+
+
+
 
 
 plt.figure(figsize=(0.4,0.4))
@@ -248,3 +279,4 @@ plt.subplots_adjust(left=0.00, bottom=0.00, right=0.99,top=0.99, hspace=0.0, wsp
 plt.savefig(graphs_path+'/Boundary effect of VMD at Huaxian(minimap-c11).eps',format='EPS',dpi=2000)
 
 plt.show()
+

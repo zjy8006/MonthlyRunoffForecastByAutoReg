@@ -240,7 +240,7 @@ def plot_error_distribution(records,predictions,fig_savepath,figsize=(3.54,2.0),
     # plt.hist(error,bins=25)
     # plt.hist(error, 50, density=True,log=True, facecolor='g', alpha=0.75)
     plt.hist(error, 20, density=True,log=True,)
-    plt.xlabel('Prediction Error')
+    plt.xlabel('Error')
     plt.ylabel('count')
     plt.tight_layout()
     plt.savefig(fig_savepath, format=format, dpi=dpi)
