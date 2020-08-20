@@ -17,6 +17,7 @@ esvr-tsdp
 esvr-wddff
 gbrt
 lstm
+dnn
 arma
 arima
 graph
@@ -68,3 +69,5 @@ pca_one_step_one_month.py
 #R
 test.r
 tempCodeRunnerFile.r
+.RData
+.RHistory

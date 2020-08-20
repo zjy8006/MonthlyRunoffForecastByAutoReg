@@ -22,7 +22,7 @@ if not os.path.exists(model_path):
     
 import sys
 sys.path.append(root_path)
-from dump_data import dum_pred_results
+from dump_data import dump_pred_results
 from plot_utils import plot_rela_pred,plot_history,plot_error_distribution,plot_convergence_,plot_evaluations_,plot_objective_
 from variables import lags
 
@@ -272,7 +272,7 @@ test_y = np.multiply(test_y + 1,sMax - sMin) / 2 + sMin
 test_predictions = np.multiply(test_predictions + 1,sMax - sMin) / 2 + sMin
 test_predictions[test_predictions<0.0]=0.0
 
-dum_pred_results(
+dump_pred_results(
     path = model_path+MODEL_NAME+'.csv',
     train_y = train_y,
     train_predictions=train_predictions,

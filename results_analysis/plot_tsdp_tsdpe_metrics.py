@@ -112,8 +112,8 @@ time_cost=[
 face_colors={
     0:'#00FF9F',#eemd-svr
     1:'#00FF9F',#eemd-svr-a
-    2:'#FFA500',#ssa-svr
-    3:'#FFA500',#ssa-svr-a
+    2:'#FFE4E1',#ssa-svr
+    3:'#FFE4E1',#ssa-svr-a
     4:'#FF4500',#vmd-svr
     5:'#FF4500',#vmd-svr-a
     6:'#FAA460',#dwt-svr
@@ -155,7 +155,7 @@ for i in range(len(all_datas)):
         pc.set_edgecolor('black')
         pc.set_alpha(1)
 plt.subplots_adjust(left=0.066, bottom=0.16, right=0.99,top=0.99, hspace=0.05, wspace=0.2)
-plt.savefig(graphs_path+'/Fig.14.TSDP and TSDPE violin metrics.eps',format='EPS', dpi=2000)
-plt.savefig(graphs_path+'/Fig.14.TSDP and TSDPE violin metrics.tif',format='TIFF', dpi=500)
-plt.savefig(graphs_path+'/Fig.14.TSDP and TSDPE violin metrics.pdf',format='PDF', dpi=1200)
+plt.savefig(graphs_path+'/TSDP and TSDPE violin metrics.eps',format='EPS', dpi=2000)
+plt.savefig(graphs_path+'/TSDP and TSDPE violin metrics.tif',format='TIFF', dpi=500)
+plt.savefig(graphs_path+'/TSDP and TSDPE violin metrics.pdf',format='PDF', dpi=1200)
 plt.show()

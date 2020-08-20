@@ -16,9 +16,55 @@ h_arma = read_pure_arma("Huaxian")
 x_arma = read_pure_arma("Xianyang")
 z_arma = read_pure_arma("Zhangjiashan")
 
-h_svr = pd.read_csv(root_path+'/Huaxian/projects/esvr/1_ahead_pacf/optimal_model_results.csv')
-x_svr = pd.read_csv(root_path+'/Xianyang/projects/esvr/1_ahead_pacf/optimal_model_results.csv')
-z_svr = pd.read_csv(root_path+'/Zhangjiashan/projects/esvr/1_ahead_pacf/optimal_model_results.csv')
+h_svr_1 = pd.read_csv(root_path+'/Huaxian/projects/esvr/1_ahead_pacf_lag12/optimal_model_results.csv')
+h_svr_3 = pd.read_csv(root_path+'/Huaxian/projects/esvr/3_ahead_pacf_lag12/optimal_model_results.csv')
+h_svr_5 = pd.read_csv(root_path+'/Huaxian/projects/esvr/5_ahead_pacf_lag12/optimal_model_results.csv')
+h_svr_7 = pd.read_csv(root_path+'/Huaxian/projects/esvr/7_ahead_pacf_lag12/optimal_model_results.csv')
+
+
+x_svr_1 = pd.read_csv(root_path+'/Xianyang/projects/esvr/1_ahead_pacf_lag12/optimal_model_results.csv')
+x_svr_3 = pd.read_csv(root_path+'/Xianyang/projects/esvr/3_ahead_pacf_lag12/optimal_model_results.csv')
+x_svr_5 = pd.read_csv(root_path+'/Xianyang/projects/esvr/5_ahead_pacf_lag12/optimal_model_results.csv')
+x_svr_7 = pd.read_csv(root_path+'/Xianyang/projects/esvr/7_ahead_pacf_lag12/optimal_model_results.csv')
+
+
+z_svr_1 = pd.read_csv(root_path+'/Zhangjiashan/projects/esvr/1_ahead_pacf_lag12/optimal_model_results.csv')
+z_svr_3 = pd.read_csv(root_path+'/Zhangjiashan/projects/esvr/3_ahead_pacf_lag12/optimal_model_results.csv')
+z_svr_5 = pd.read_csv(root_path+'/Zhangjiashan/projects/esvr/5_ahead_pacf_lag12/optimal_model_results.csv')
+z_svr_7 = pd.read_csv(root_path+'/Zhangjiashan/projects/esvr/7_ahead_pacf_lag12/optimal_model_results.csv')
+
+h_lstm_1 = pd.read_csv(root_path+'/Huaxian/projects/lstm/1_ahead/optimal/opt_pred.csv')
+h_lstm_3 = pd.read_csv(root_path+'/Huaxian/projects/lstm/3_ahead/optimal/opt_pred.csv')
+h_lstm_5 = pd.read_csv(root_path+'/Huaxian/projects/lstm/5_ahead/optimal/opt_pred.csv')
+h_lstm_7 = pd.read_csv(root_path+'/Huaxian/projects/lstm/7_ahead/optimal/opt_pred.csv')
+
+x_lstm_1 = pd.read_csv(root_path+'/Xianyang/projects/lstm/1_ahead/optimal/opt_pred.csv')
+x_lstm_3 = pd.read_csv(root_path+'/Xianyang/projects/lstm/3_ahead/optimal/opt_pred.csv')
+x_lstm_5 = pd.read_csv(root_path+'/Xianyang/projects/lstm/5_ahead/optimal/opt_pred.csv')
+x_lstm_7 = pd.read_csv(root_path+'/Xianyang/projects/lstm/7_ahead/optimal/opt_pred.csv')
+
+z_lstm_1 = pd.read_csv(root_path+'/Zhangjiashan/projects/lstm/1_ahead/optimal/opt_pred.csv')
+z_lstm_3 = pd.read_csv(root_path+'/Zhangjiashan/projects/lstm/3_ahead/optimal/opt_pred.csv')
+z_lstm_5 = pd.read_csv(root_path+'/Zhangjiashan/projects/lstm/5_ahead/optimal/opt_pred.csv')
+z_lstm_7 = pd.read_csv(root_path+'/Zhangjiashan/projects/lstm/7_ahead/optimal/opt_pred.csv')
+
+
+h_dnn_1 = pd.read_csv(root_path+'/Huaxian/projects/dnn/1_ahead/optimal/opt_pred.csv')
+h_dnn_3 = pd.read_csv(root_path+'/Huaxian/projects/dnn/3_ahead/optimal/opt_pred.csv')
+h_dnn_5 = pd.read_csv(root_path+'/Huaxian/projects/dnn/5_ahead/optimal/opt_pred.csv')
+h_dnn_7 = pd.read_csv(root_path+'/Huaxian/projects/dnn/7_ahead/optimal/opt_pred.csv')
+
+x_dnn_1 = pd.read_csv(root_path+'/Xianyang/projects/dnn/1_ahead/optimal/opt_pred.csv')
+x_dnn_3 = pd.read_csv(root_path+'/Xianyang/projects/dnn/3_ahead/optimal/opt_pred.csv')
+x_dnn_5 = pd.read_csv(root_path+'/Xianyang/projects/dnn/5_ahead/optimal/opt_pred.csv')
+x_dnn_7 = pd.read_csv(root_path+'/Xianyang/projects/dnn/7_ahead/optimal/opt_pred.csv')
+
+z_dnn_1 = pd.read_csv(root_path+'/Zhangjiashan/projects/dnn/1_ahead/optimal/opt_pred.csv')
+z_dnn_3 = pd.read_csv(root_path+'/Zhangjiashan/projects/dnn/3_ahead/optimal/opt_pred.csv')
+z_dnn_5 = pd.read_csv(root_path+'/Zhangjiashan/projects/dnn/5_ahead/optimal/opt_pred.csv')
+z_dnn_7 = pd.read_csv(root_path+'/Zhangjiashan/projects/dnn/7_ahead/optimal/opt_pred.csv')
+
+
 h_d_1 = pd.read_csv(root_path+'/Huaxian_dwt/projects/esvr/db10-2/one_step_1_ahead_forecast_pacf/optimal_model_results.csv')
 h_d_3 = pd.read_csv(root_path+'/Huaxian_dwt/projects/esvr/db10-2/one_step_3_ahead_forecast_pacf/optimal_model_results.csv')
 h_d_5 = pd.read_csv(root_path+'/Huaxian_dwt/projects/esvr/db10-2/one_step_5_ahead_forecast_pacf/optimal_model_results.csv')
@@ -110,30 +156,60 @@ def autolabels(rects, ax):
             ha='center', va='bottom',
         )
 nse_arma_data = [h_arma['test_nse'],x_arma['test_nse'],z_arma['test_nse']]
-nse_svr_data = [h_svr['test_nse'][0],x_svr['test_nse'][0],z_svr['test_nse'][0]]
+nse_svr_data1 = [h_svr_1['test_nse'][0],x_svr_1['test_nse'][0],z_svr_1['test_nse'][0]]
+nse_svr_data3 = [h_svr_3['test_nse'][0],x_svr_3['test_nse'][0],z_svr_3['test_nse'][0]]
+nse_svr_data5 = [h_svr_5['test_nse'][0],x_svr_5['test_nse'][0],z_svr_5['test_nse'][0]]
+nse_svr_data7 = [h_svr_7['test_nse'][0],x_svr_7['test_nse'][0],z_svr_7['test_nse'][0]]
+
+nse_dnn_data1 = [h_dnn_1['test_nse'][0],x_dnn_1['test_nse'][0],z_dnn_1['test_nse'][0]]
+nse_dnn_data3 = [h_dnn_3['test_nse'][0],x_dnn_3['test_nse'][0],z_dnn_3['test_nse'][0]]
+nse_dnn_data5 = [h_dnn_5['test_nse'][0],x_dnn_5['test_nse'][0],z_dnn_5['test_nse'][0]]
+nse_dnn_data7 = [h_dnn_7['test_nse'][0],x_dnn_7['test_nse'][0],z_dnn_7['test_nse'][0]]
+
+nse_lstm_data1 = [h_lstm_1['test_nse'][0],x_lstm_1['test_nse'][0],z_lstm_1['test_nse'][0]]
+nse_lstm_data3 = [h_lstm_3['test_nse'][0],x_lstm_3['test_nse'][0],z_lstm_3['test_nse'][0]]
+nse_lstm_data5 = [h_lstm_5['test_nse'][0],x_lstm_5['test_nse'][0],z_lstm_5['test_nse'][0]]
+nse_lstm_data7 = [h_lstm_7['test_nse'][0],x_lstm_7['test_nse'][0],z_lstm_7['test_nse'][0]]
+
 nse_eemd_data1=[h_e_1['test_nse'][0],x_e_1['test_nse'][0],z_e_1['test_nse'][0]]
 nse_eemd_data3=[h_e_3['test_nse'][0],x_e_3['test_nse'][0],z_e_3['test_nse'][0]]
 nse_eemd_data5=[h_e_5['test_nse'][0],x_e_5['test_nse'][0],z_e_5['test_nse'][0]]
 nse_eemd_data7=[h_e_7['test_nse'][0],x_e_7['test_nse'][0],z_e_7['test_nse'][0]]
+
 nse_ssa_data1=[h_s_1['test_nse'][0],x_s_1['test_nse'][0],z_s_1['test_nse'][0]]
 nse_ssa_data3=[h_s_3['test_nse'][0],x_s_3['test_nse'][0],z_s_3['test_nse'][0]]
 nse_ssa_data5=[h_s_5['test_nse'][0],x_s_5['test_nse'][0],z_s_5['test_nse'][0]]
 nse_ssa_data7=[h_s_7['test_nse'][0],x_s_7['test_nse'][0],z_s_7['test_nse'][0]]
+
 nse_vmd_data1=[h_v_1['test_nse'][0],x_v_1['test_nse'][0],z_v_1['test_nse'][0]]
 nse_vmd_data3=[h_v_3['test_nse'][0],x_v_3['test_nse'][0],z_v_3['test_nse'][0]]
 nse_vmd_data5=[h_v_5['test_nse'][0],x_v_5['test_nse'][0],z_v_5['test_nse'][0]]
 nse_vmd_data7=[h_v_7['test_nse'][0],x_v_7['test_nse'][0],z_v_7['test_nse'][0]]
+
 nse_dwt_data1=[h_d_1['test_nse'][0],x_d_1['test_nse'][0],z_d_1['test_nse'][0]]
 nse_dwt_data3=[h_d_3['test_nse'][0],x_d_3['test_nse'][0],z_d_3['test_nse'][0]]
 nse_dwt_data5=[h_d_5['test_nse'][0],x_d_5['test_nse'][0],z_d_5['test_nse'][0]]
 nse_dwt_data7=[h_d_7['test_nse'][0],x_d_7['test_nse'][0],z_d_7['test_nse'][0]]
+
 nse_modwt_data1=[h_m_1['test_nse'][0],x_m_1['test_nse'][0],z_m_1['test_nse'][0]]
 nse_modwt_data3=[h_m_3['test_nse'][0],x_m_3['test_nse'][0],z_m_3['test_nse'][0]]
 nse_modwt_data5=[h_m_5['test_nse'][0],x_m_5['test_nse'][0],z_m_5['test_nse'][0]]
 nse_modwt_data7=[h_m_7['test_nse'][0],x_m_7['test_nse'][0],z_m_7['test_nse'][0]]
+
 nse_data=[
     nse_arma_data,
-    nse_svr_data,
+    nse_svr_data1,
+    nse_svr_data3,
+    nse_svr_data5,
+    nse_svr_data7,
+    nse_dnn_data1,
+    nse_dnn_data3,
+    nse_dnn_data5,
+    nse_dnn_data7,
+    nse_lstm_data1,
+    nse_lstm_data3,
+    nse_lstm_data5,
+    nse_lstm_data7,
     nse_eemd_data1,
     nse_eemd_data3,
     nse_eemd_data5,
@@ -156,7 +232,14 @@ nse_data=[
     nse_modwt_data7,
 ]
 
-svr_mean_nse = sum(nse_svr_data)/len(nse_svr_data)
+arima_mean_nse = sum(nse_arma_data)/len(nse_arma_data)
+
+svr_mean_nse = [
+    sum(nse_svr_data1)/len(nse_svr_data1),
+    sum(nse_svr_data3)/len(nse_svr_data3),
+    sum(nse_svr_data5)/len(nse_svr_data5),
+    sum(nse_svr_data7)/len(nse_svr_data7),
+]
 eemd_mean_nse=[
     sum(nse_eemd_data1)/len(nse_eemd_data1),
     sum(nse_eemd_data3)/len(nse_eemd_data3),
@@ -189,11 +272,11 @@ modwt_mean_nse=[
     sum(nse_modwt_data7)/len(nse_modwt_data7),
 ]
 
-eemd_nse_ins = [(nse-svr_mean_nse)/svr_mean_nse*100 for nse in eemd_mean_nse]
-ssa_nse_ins = [(nse-svr_mean_nse)/svr_mean_nse*100 for nse in ssa_mean_nse]
-dwt_nse_ins = [(nse-svr_mean_nse)/svr_mean_nse*100 for nse in dwt_mean_nse]
-vmd_nse_ins = [(nse-svr_mean_nse)/svr_mean_nse*100 for nse in vmd_mean_nse]
-modwt_nse_ins = [(nse-svr_mean_nse)/svr_mean_nse*100 for nse in modwt_mean_nse]
+eemd_nse_ins = [(nse-arima_mean_nse)/arima_mean_nse*100 for nse in eemd_mean_nse]
+ssa_nse_ins = [(nse-arima_mean_nse)/arima_mean_nse*100 for nse in ssa_mean_nse]
+dwt_nse_ins = [(nse-arima_mean_nse)/arima_mean_nse*100 for nse in dwt_mean_nse]
+vmd_nse_ins = [(nse-arima_mean_nse)/arima_mean_nse*100 for nse in vmd_mean_nse]
+modwt_nse_ins = [(nse-arima_mean_nse)/arima_mean_nse*100 for nse in modwt_mean_nse]
 
 nse_ins={
     'EEMD-SVR':eemd_nse_ins,
@@ -204,32 +287,62 @@ nse_ins={
 }
 
 nse_ins_df = pd.DataFrame(nse_ins,index=['1-month ahead','3-month ahead','5-month ahead','7-month ahead'])
-nse_ins_df.to_csv(root_path+'/results_analysis/results/mean_nse_increasement_based_svr.csv')
+nse_ins_df.to_csv(root_path+'/results_analysis/results/mean_nse_increasement_based_arima.csv')
 nrmse_arma_data = [h_arma['test_nrmse'],x_arma['test_nrmse'],z_arma['test_nrmse']]
-nrmse_svr_data = [h_svr['test_nrmse'][0],x_svr['test_nrmse'][0],z_svr['test_nrmse'][0]]
+
+nrmse_svr_data1 = [h_svr_1['test_nrmse'][0],x_svr_1['test_nrmse'][0],z_svr_1['test_nrmse'][0]]
+nrmse_svr_data3 = [h_svr_3['test_nrmse'][0],x_svr_3['test_nrmse'][0],z_svr_3['test_nrmse'][0]]
+nrmse_svr_data5 = [h_svr_5['test_nrmse'][0],x_svr_5['test_nrmse'][0],z_svr_5['test_nrmse'][0]]
+nrmse_svr_data7 = [h_svr_7['test_nrmse'][0],x_svr_7['test_nrmse'][0],z_svr_7['test_nrmse'][0]]
+
+nrmse_dnn_data1 = [h_dnn_1['test_nrmse'][0],x_dnn_1['test_nrmse'][0],z_dnn_1['test_nrmse'][0]]
+nrmse_dnn_data3 = [h_dnn_3['test_nrmse'][0],x_dnn_3['test_nrmse'][0],z_dnn_3['test_nrmse'][0]]
+nrmse_dnn_data5 = [h_dnn_5['test_nrmse'][0],x_dnn_5['test_nrmse'][0],z_dnn_5['test_nrmse'][0]]
+nrmse_dnn_data7 = [h_dnn_7['test_nrmse'][0],x_dnn_7['test_nrmse'][0],z_dnn_7['test_nrmse'][0]]
+
+nrmse_lstm_data1 = [h_lstm_1['test_nrmse'][0],x_lstm_1['test_nrmse'][0],z_lstm_1['test_nrmse'][0]]
+nrmse_lstm_data3 = [h_lstm_3['test_nrmse'][0],x_lstm_3['test_nrmse'][0],z_lstm_3['test_nrmse'][0]]
+nrmse_lstm_data5 = [h_lstm_5['test_nrmse'][0],x_lstm_5['test_nrmse'][0],z_lstm_5['test_nrmse'][0]]
+nrmse_lstm_data7 = [h_lstm_7['test_nrmse'][0],x_lstm_7['test_nrmse'][0],z_lstm_7['test_nrmse'][0]]
+
 nrmse_eemd_data1=[h_e_1['test_nrmse'][0],x_e_1['test_nrmse'][0],z_e_1['test_nrmse'][0]]
 nrmse_eemd_data3=[h_e_3['test_nrmse'][0],x_e_3['test_nrmse'][0],z_e_3['test_nrmse'][0]]
 nrmse_eemd_data5=[h_e_5['test_nrmse'][0],x_e_5['test_nrmse'][0],z_e_5['test_nrmse'][0]]
 nrmse_eemd_data7=[h_e_7['test_nrmse'][0],x_e_7['test_nrmse'][0],z_e_7['test_nrmse'][0]]
+
 nrmse_ssa_data1=[h_s_1['test_nrmse'][0],x_s_1['test_nrmse'][0],z_s_1['test_nrmse'][0]]
 nrmse_ssa_data3=[h_s_3['test_nrmse'][0],x_s_3['test_nrmse'][0],z_s_3['test_nrmse'][0]]
 nrmse_ssa_data5=[h_s_5['test_nrmse'][0],x_s_5['test_nrmse'][0],z_s_5['test_nrmse'][0]]
 nrmse_ssa_data7=[h_s_7['test_nrmse'][0],x_s_7['test_nrmse'][0],z_s_7['test_nrmse'][0]]
+
 nrmse_vmd_data1=[h_v_1['test_nrmse'][0],x_v_1['test_nrmse'][0],z_v_1['test_nrmse'][0]]
 nrmse_vmd_data3=[h_v_3['test_nrmse'][0],x_v_3['test_nrmse'][0],z_v_3['test_nrmse'][0]]
 nrmse_vmd_data5=[h_v_5['test_nrmse'][0],x_v_5['test_nrmse'][0],z_v_5['test_nrmse'][0]]
 nrmse_vmd_data7=[h_v_7['test_nrmse'][0],x_v_7['test_nrmse'][0],z_v_7['test_nrmse'][0]]
+
 nrmse_dwt_data1=[h_d_1['test_nrmse'][0],x_d_1['test_nrmse'][0],z_d_1['test_nrmse'][0]]
 nrmse_dwt_data3=[h_d_3['test_nrmse'][0],x_d_3['test_nrmse'][0],z_d_3['test_nrmse'][0]]
 nrmse_dwt_data5=[h_d_5['test_nrmse'][0],x_d_5['test_nrmse'][0],z_d_5['test_nrmse'][0]]
 nrmse_dwt_data7=[h_d_7['test_nrmse'][0],x_d_7['test_nrmse'][0],z_d_7['test_nrmse'][0]]
+
 nrmse_modwt_data1=[h_m_1['test_nrmse'][0],x_m_1['test_nrmse'][0],z_m_1['test_nrmse'][0]]
 nrmse_modwt_data3=[h_m_3['test_nrmse'][0],x_m_3['test_nrmse'][0],z_m_3['test_nrmse'][0]]
 nrmse_modwt_data5=[h_m_5['test_nrmse'][0],x_m_5['test_nrmse'][0],z_m_5['test_nrmse'][0]]
 nrmse_modwt_data7=[h_m_7['test_nrmse'][0],x_m_7['test_nrmse'][0],z_m_7['test_nrmse'][0]]
 nrmse_data=[
     nrmse_arma_data,
-    nrmse_svr_data,
+    nrmse_svr_data1,
+    nrmse_svr_data3,
+    nrmse_svr_data5,
+    nrmse_svr_data7,
+    nrmse_dnn_data1,
+    nrmse_dnn_data3,
+    nrmse_dnn_data5,
+    nrmse_dnn_data7,
+    nrmse_lstm_data1,
+    nrmse_lstm_data3,
+    nrmse_lstm_data5,
+    nrmse_lstm_data7,
     nrmse_eemd_data1,
     nrmse_eemd_data3,
     nrmse_eemd_data5,
@@ -282,7 +395,23 @@ modwt_mean_nrmse=[
     sum(nrmse_modwt_data7)/len(nrmse_modwt_data7),
 ]
 ppts_arma_data = [h_arma['test_ppts'],x_arma['test_ppts'],z_arma['test_ppts']]
-ppts_svr_data = [h_svr['test_ppts'][0],x_svr['test_ppts'][0],z_svr['test_ppts'][0]]
+ppts_svr_data1 = [h_svr_1['test_ppts'][0],x_svr_1['test_ppts'][0],z_svr_1['test_ppts'][0]]
+ppts_svr_data3 = [h_svr_3['test_ppts'][0],x_svr_3['test_ppts'][0],z_svr_3['test_ppts'][0]]
+ppts_svr_data5 = [h_svr_5['test_ppts'][0],x_svr_5['test_ppts'][0],z_svr_5['test_ppts'][0]]
+ppts_svr_data7 = [h_svr_7['test_ppts'][0],x_svr_7['test_ppts'][0],z_svr_7['test_ppts'][0]]
+
+ppts_dnn_data1 = [h_dnn_1['test_ppts'][0],x_dnn_1['test_ppts'][0],z_dnn_1['test_ppts'][0]]
+ppts_dnn_data3 = [h_dnn_3['test_ppts'][0],x_dnn_3['test_ppts'][0],z_dnn_3['test_ppts'][0]]
+ppts_dnn_data5 = [h_dnn_5['test_ppts'][0],x_dnn_5['test_ppts'][0],z_dnn_5['test_ppts'][0]]
+ppts_dnn_data7 = [h_dnn_7['test_ppts'][0],x_dnn_7['test_ppts'][0],z_dnn_7['test_ppts'][0]]
+
+
+ppts_lstm_data1 = [h_lstm_1['test_ppts'][0],x_lstm_1['test_ppts'][0],z_lstm_1['test_ppts'][0]]
+ppts_lstm_data3 = [h_lstm_3['test_ppts'][0],x_lstm_3['test_ppts'][0],z_lstm_3['test_ppts'][0]]
+ppts_lstm_data5 = [h_lstm_5['test_ppts'][0],x_lstm_5['test_ppts'][0],z_lstm_5['test_ppts'][0]]
+ppts_lstm_data7 = [h_lstm_7['test_ppts'][0],x_lstm_7['test_ppts'][0],z_lstm_7['test_ppts'][0]]
+
+
 ppts_eemd_data1=[h_e_1['test_ppts'][0],x_e_1['test_ppts'][0],z_e_1['test_ppts'][0]]
 ppts_eemd_data3=[h_e_3['test_ppts'][0],x_e_3['test_ppts'][0],z_e_3['test_ppts'][0]]
 ppts_eemd_data5=[h_e_5['test_ppts'][0],x_e_5['test_ppts'][0],z_e_5['test_ppts'][0]]
@@ -305,7 +434,18 @@ ppts_modwt_data5=[h_m_5['test_ppts'][0],x_m_5['test_ppts'][0],z_m_5['test_ppts']
 ppts_modwt_data7=[h_m_7['test_ppts'][0],x_m_7['test_ppts'][0],z_m_7['test_ppts'][0]]
 ppts_data=[
     ppts_arma_data,
-    ppts_svr_data,
+    ppts_svr_data1,
+    ppts_svr_data3,
+    ppts_svr_data5,
+    ppts_svr_data7,
+    ppts_dnn_data1,
+    ppts_dnn_data3,
+    ppts_dnn_data5,
+    ppts_dnn_data7,
+    ppts_lstm_data1,
+    ppts_lstm_data3,
+    ppts_lstm_data5,
+    ppts_lstm_data7,
     ppts_eemd_data1,
     ppts_eemd_data3,
     ppts_eemd_data5,
@@ -425,8 +565,19 @@ for i in range(1,len(eemd_mean_ppts)):
 all_datas = [nse_data,nrmse_data,ppts_data]
 fig_index=["(a)","(b)","(c)"]
 labels=[
-    'ARMA, 1',
+    'ARIMA, 1',
     'SVR, 1',
+    'SVR, 3',
+    'SVR, 5',
+    'SVR, 7',
+    'BPNN, 1',
+    'BPNN, 3',
+    'BPNN, 5',
+    'BPNN, 7',
+    'LSTM, 1',
+    'LSTM, 3',
+    'LSTM, 5',
+    'LSTM, 7',
     "EEMD-SVR, 1",
     "EEMD-SVR, 3",
     "EEMD-SVR, 5",
@@ -449,28 +600,39 @@ labels=[
     "BCMODWT-SVR, 7",
 ]
 face_colors={
-    0:'#DA70D6',#arma
+    0:'#DA70D6',#arima
     1:'#B0C4DE',#svr
-    2:'#00FF9F',#eemd-svr
-    3:'#00FF9F',#eemd-svr
-    4:'#00FF9F',#eemd-svr
-    5:'#00FF9F',#eemd-svr
-    6:'#FFA500',#ssa-svr
-    7:'#FFA500',#ssa-svr
-    8:'#FFA500',#ssa-svr
-    9:'#FFA500',#ssa-svr
-    10:'#FF4500',#vmd-svr
-    11:'#FF4500',#vmd-svr
-    12:'#FF4500',#vmd-svr
-    13:'#FF4500',#vmd-svr
-    14:'#FAA460',#dwt-svr
-    15:'#FAA460',#dwt-svr
-    16:'#FAA460',#dwt-svr
-    17:'#FAA460',#dwt-svr
-    18:'#ADFF2F',#dwt-svr
-    19:'#ADFF2F',#dwt-svr
-    20:'#ADFF2F',#dwt-svr
-    21:'#ADFF2F',#dwt-svr
+    2:'#B0C4DE',#svr
+    3:'#B0C4DE',#svr
+    4:'#B0C4DE',#svr
+    5:'#F08080',#bpnn 
+    6:'#F08080',#bpnn 
+    7:'#F08080',#bpnn 
+    8:'#F08080',#bpnn 
+    9:'#87CEFA',#lstm
+    10:'#87CEFA',#lstm
+    11:'#87CEFA',#lstm
+    12:'#87CEFA',#lstm
+    13:'#00FF9F',#eemd-svr
+    14:'#00FF9F',#eemd-svr
+    15:'#00FF9F',#eemd-svr
+    16:'#00FF9F',#eemd-svr
+    17:'#FFE4E1',#ssa-svr
+    18:'#FFE4E1',#ssa-svr
+    19:'#FFE4E1',#ssa-svr
+    20:'#FFE4E1',#ssa-svr
+    21:'#FF4500',#vmd-svr
+    22:'#FF4500',#vmd-svr
+    23:'#FF4500',#vmd-svr
+    24:'#FF4500',#vmd-svr
+    25:'#FAA460',#dwt-svr
+    26:'#FAA460',#dwt-svr
+    27:'#FAA460',#dwt-svr
+    28:'#FAA460',#dwt-svr
+    29:'#ADFF2F',#dwt-svr
+    30:'#ADFF2F',#dwt-svr
+    31:'#ADFF2F',#dwt-svr
+    32:'#ADFF2F',#dwt-svr
 }
 x = list(range(len(labels)))
 ylabels=[
@@ -513,7 +675,7 @@ for i in range(len(all_datas)):
         pc.set_alpha(1)
 # plt.tight_layout()
 plt.subplots_adjust(left=0.066, bottom=0.16, right=0.99,top=0.99, hspace=0.05, wspace=0.25)
-plt.savefig(graphs_path+'Fig.16.Violin plots for TSDP and WDDFF at Huaxian.eps',format='EPS',dpi=2000)
-plt.savefig(graphs_path+'Fig.16.Violin plots for TSDP and WDDFF at Huaxian.tif',format='TIFF',dpi=500)
-plt.savefig(graphs_path+'Fig.16.Violin plots for TSDP and WDDFF at Huaxian.pdf',format='PDF',dpi=1200)
+plt.savefig(graphs_path+'Violin plots for TSDP and WDDFF at Huaxian.eps',format='EPS',dpi=2000)
+plt.savefig(graphs_path+'Violin plots for TSDP and WDDFF at Huaxian.tif',format='TIFF',dpi=500)
+plt.savefig(graphs_path+'Violin plots for TSDP and WDDFF at Huaxian.pdf',format='PDF',dpi=1200)
 plt.show()

@@ -10,7 +10,7 @@ from Xianyang.projects.variables import variables
 ORIGINAL = 'XianyangRunoff1951-2018(1953-2018).xlsx'
 STATION = 'Xianyang'
 PREDICTOR = 'esvr' # esvr or gbrt or lstm
-PREDICT_PATTERN = '1_ahead_pacf'
+PREDICT_PATTERN = '7_ahead_pacf_lag12'
 
 ensemble(
     root_path=root_path,

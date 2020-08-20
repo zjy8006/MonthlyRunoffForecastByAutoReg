@@ -7,19 +7,19 @@ from tools.models import esvr,multi_optimizer_esvr,esvr_multi_seed
 
 if __name__ == '__main__':
     
-    # esvr(
-    #     root_path=root_path,
-    #     station='Huaxian',
-    #     predict_pattern='1_ahead_pacf',
-    #     n_calls=100,
-    # )
-
-    esvr_multi_seed(
+    esvr(
         root_path=root_path,
         station='Huaxian',
-        predict_pattern='1_ahead_pacf',
-        n_calls=10,
+        predict_pattern='7_ahead_pacf_lag12',
+        n_calls=100,
     )
+
+    # esvr_multi_seed(
+    #     root_path=root_path,
+    #     station='Huaxian',
+    #     predict_pattern='5_ahead_pacf_lag12',
+    #     n_calls=100,
+    # )
 
   
     

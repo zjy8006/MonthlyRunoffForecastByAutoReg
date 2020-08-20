@@ -98,9 +98,9 @@ for i in range(len(decom_samples)):
             )
 # plt.tight_layout()
 plt.subplots_adjust(left=0.065, bottom=0.20, right=0.99,top=0.90, hspace=0.15, wspace=0.3)
-plt.savefig(graphs_path+'Fig.11 Mutual information between predictors and predicted targets at Huaxian.eps',format='EPS',dpi=2000)
-plt.savefig(graphs_path+'Fig.11 Mutual information between predictors and predicted targets at Huaxian.tif',format='TIFF',dpi=500)
-plt.savefig(graphs_path+'Fig.11 Mutual information between predictors and predicted targets at Huaxian.pdf',format='PDF',dpi=1200)
+plt.savefig(graphs_path+'Mutual information between predictors and predicted targets at Huaxian.eps',format='EPS',dpi=2000)
+plt.savefig(graphs_path+'Mutual information between predictors and predicted targets at Huaxian.tif',format='TIFF',dpi=500)
+plt.savefig(graphs_path+'Mutual information between predictors and predicted targets at Huaxian.pdf',format='PDF',dpi=1200)
 plt.show()
 
 # width = 0.8

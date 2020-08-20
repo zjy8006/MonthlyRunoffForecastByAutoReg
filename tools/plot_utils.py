@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import deprecated
 import re
 import os
-root_path = os.path.dirname(os.path.abspath('__file__'))
+root = os.path.dirname(os.path.abspath('__file__'))
 import sys
-sys.path.append(root_path)
+sys.path.append(root)
 from tools.skopt_plots import plot_convergence,plot_objective,plot_evaluations
 from config.globalLog import logger
 # plt.rcParams['figure.figsize']=(10,8)
@@ -53,22 +53,22 @@ def plot_cv_error(data_path,labels,mode='avg'):
         plt.plot(list(test_cv.keys()),list(test_cv.values()),marker='o',label=label+'test')
         plt.legend()
     plt.tight_layout()
-    plt.show()
+    # plt.show()
 
 
-def plot_pacf(station,decomposer=None,wavelet_level=None):
+def plot_pacf(station,decomposer=None,wavelet_level=None,measurement_time='month',measurement_unit="$10^8m^3$",):
     if decomposer==None:
-        file_path = root_path+'/'+station+'/data/PACF.csv'
-        save_path = root_path+'/'+station+'/graph/'
+        file_path = root+'/'+station+'/data/PACF.csv'
+        save_path = root+'/'+station+'/graph/'
     elif wavelet_level==None:
-        file_path = root_path+'/'+station+'_'+decomposer+'/data/PACF.csv'
-        save_path = root_path+'/'+station+'_'+decomposer+'/graph/'
+        file_path = root+'/'+station+'_'+decomposer+'/data/PACF.csv'
+        save_path = root+'/'+station+'_'+decomposer+'/graph/'
     elif decomposer=='modwt':
-        file_path = root_path+'/'+station+'_'+decomposer+'/data-tsdp/'+wavelet_level+'/PACF.csv'
-        save_path = root_path+'/'+station+'_'+decomposer+'/graph/'
+        file_path = root+'/'+station+'_'+decomposer+'/data-tsdp/'+wavelet_level+'/PACF.csv'
+        save_path = root+'/'+station+'_'+decomposer+'/graph/'
     else:
-        file_path = root_path+'/'+station+'_'+decomposer+'/data/'+wavelet_level+'/PACF.csv'
-        save_path = root_path+'/'+station+'_'+decomposer+'/graph/'
+        file_path = root+'/'+station+'_'+decomposer+'/data/'+wavelet_level+'/PACF.csv'
+        save_path = root+'/'+station+'_'+decomposer+'/graph/'
     data = pd.read_csv(file_path)
     up = data.pop('UP')
     low = data.pop('LOW')
@@ -106,7 +106,7 @@ def plot_pacf(station,decomposer=None,wavelet_level=None):
         plt.ylim(-1,1)
         plt.xticks([0,2,4,6,8,10,12,14,16,18,20],)
         plt.yticks()
-        plt.xlabel('Lag(month)', )
+        plt.xlabel('Lag('+measurement_time+')', )
         plt.ylabel('PACF', )
     plt.tight_layout()
     
@@ -116,11 +116,11 @@ def plot_pacf(station,decomposer=None,wavelet_level=None):
         plt.savefig(save_path+'PACF('+wavelet_level+').png',format='PNG',dpi=300)
     else:
         plt.savefig(save_path+'PACF.png',format='PNG',dpi=300)
-    plt.show()
+    # plt.show()
 
 
 
-def plot_rela_pred(records, predictions, fig_savepath,xlabel='Time(month)',figsize=(7.48, 3),format='PNG',dpi=300):
+def plot_rela_pred(records, predictions, fig_savepath,measurement_time='month',measurement_unit="$10^8m^3$",figsize=(7.48, 3),format='PNG',dpi=300):
     """ 
     Plot the relations between the records and predictions.
     Args:
@@ -141,8 +141,8 @@ def plot_rela_pred(records, predictions, fig_savepath,xlabel='Time(month)',figsi
     
     # ax1.set_xticks([])
     # ax1.set_yticks([])
-    ax1.set_xlabel(xlabel, )
-    ax1.set_ylabel(r"Runoff($10^8m^3$)", )
+    ax1.set_xlabel('Time('+measurement_time+')', )
+    ax1.set_ylabel(r'Streamflow('+measurement_unit+')', )
     ax1.plot(t, records, '-', color='blue', label='Records',linewidth=1.0)
     ax1.plot(t, predictions, '--', color='red', label='Predictions',linewidth=1.0)
     ax1.legend(
@@ -178,8 +178,8 @@ def plot_rela_pred(records, predictions, fig_savepath,xlabel='Time(month)',figsi
     # print('b:{}'.format(coeff[1]))
     # ax2.set_xticks()
     # ax2.set_yticks()
-    ax2.set_xlabel(r'Predictions($10^8m^3$)', )
-    ax2.set_ylabel(r'Records($10^8m^3$)', )
+    ax2.set_xlabel(r'Predictions('+measurement_unit+')', )
+    ax2.set_ylabel(r'Records('+measurement_unit+')', )
     # ax2.plot(predictions, records, 'o', color='blue', label='',markersize=6.5)
     ax2.plot(predictions, records,'o', markerfacecolor='w',markeredgecolor='blue',markersize=6.5)
     # ax2.plot(predictions, linear_fit, '--', color='red', label='Linear fit',linewidth=1.0)
@@ -240,7 +240,7 @@ def plot_error_distribution(records,predictions,fig_savepath,figsize=(3.54,2.0),
     # plt.hist(error,bins=25)
     # plt.hist(error, 50, density=True,log=True, facecolor='g', alpha=0.75)
     plt.hist(error, 20, density=True,log=True,)
-    plt.xlabel('Error')
+    plt.xlabel('Prediction Error')
     plt.ylabel('count')
     plt.tight_layout()
     plt.savefig(fig_savepath, format=format, dpi=dpi)
@@ -338,7 +338,13 @@ def plot_objective_(OptimizeResult,dimensions,fig_savepath,figsize=(7.48,7.48),f
     plt.savefig(fig_savepath,format=format,dpi=dpi)
     # plt.show()
 
-def plot_subsignals_pred(predictions,records,test_len,full_len,fig_savepath,subsignals_name=None,figsize=(7.48,7.48),format='PNG',dpi=300,xlabel='Time(month)'):
+def plot_subsignals_pred(
+    predictions,records,
+    test_len,full_len,
+    fig_savepath,
+    subsignals_name=None,
+    measurement_time='month',measurement_unit="$10^8m^3$",
+    figsize=(7.48,7.48),format='PNG',dpi=300,):
     assert predictions.shape[1]==records.shape[1]
 
     if subsignals_name==None:
@@ -354,8 +360,8 @@ def plot_subsignals_pred(predictions,records,test_len,full_len,fig_savepath,subs
         plt.xticks()
         plt.yticks()
         if i==predictions.shape[1] or i==predictions.shape[1]-1:
-            plt.xlabel(xlabel, )
-        plt.ylabel(r"Runoff($10^8m^3$)", )
+            plt.xlabel('Time('+measurement_time+')', )
+        plt.ylabel(r"Streamflow("+measurement_unit+")", )
         if i==1:
             plt.plot(t,records.iloc[:,i-1], '-', color='blue', label='records',linewidth=1.0)
             plt.plot(t,predictions.iloc[:,i-1], '--', color='red', label='',linewidth=1.0)
@@ -376,7 +382,7 @@ def plot_subsignals_pred(predictions,records,test_len,full_len,fig_savepath,subs
     # plt.subplots_adjust(left=0.1, bottom=0.08, right=0.96,top=0.94, hspace=0.6, wspace=0.3)
     plt.savefig(fig_savepath, transparent=False, format=format, dpi=dpi)
 
-def plot_decompositions(signal,figsize=None,save_path=None):
+def plot_decompositions(signal,figsize=None,save_path=None,measurement_time='month',measurement_unit="$10^8m^3$",):
     cols = signal.columns.values
     logger.info('cols={}'.format(cols))
     T=signal.shape[0]
@@ -391,18 +397,18 @@ def plot_decompositions(signal,figsize=None,save_path=None):
         plt.title(cols[i])
         plt.plot(subsignal,c='b')
         if i==len(cols)-1:
-            plt.xlabel('Time(month)')
+            plt.xlabel('Time('+measurement_time+')')
         else:
             plt.xticks([])
-        plt.ylabel(r"Runoff($10^8m^3$)", )
+        plt.ylabel(r"Streamflow("+measurement_unit+")", )
         plt.subplot(len(cols),2,2*i+2)
         plt.title(cols[i])
         plt.plot(freqs,abs(fft(subsignal)),c='b',lw=0.8,zorder=0)
         if i==len(cols)-1:
-            plt.xlabel('Frequency(1/month)')
+            plt.xlabel('Frequency(1/'+measurement_time+')')
         else:
             plt.xticks([])
         plt.ylabel('Amplitude')
     plt.tight_layout()
-    plt.show()
+    # plt.show()
 

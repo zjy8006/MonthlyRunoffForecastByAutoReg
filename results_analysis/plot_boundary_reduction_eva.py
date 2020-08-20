@@ -167,9 +167,9 @@ face_colors={
     0:'#00FF9F',#eemd-svr
     1:'#00FF9F',#eemd-svr
     2:'#00FF9F',#eemd-svr
-    3:'#FFA500',#ssa-svr
-    4:'#FFA500',#ssa-svr
-    5:'#FFA500',#ssa-svr
+    3:'#FFE4E1',#ssa-svr
+    4:'#FFE4E1',#ssa-svr
+    5:'#FFE4E1',#ssa-svr
     6:'#FF4500',#vmd-svr
     7:'#FF4500',#vmd-svr
     8:'#FF4500',#vmd-svr
@@ -210,9 +210,9 @@ for i in range(len(all_datas)):
         pc.set_alpha(1)
 
 plt.subplots_adjust(left=0.066, bottom=0.2, right=0.99,top=0.99, hspace=0.05, wspace=0.12)
-plt.savefig(graphs_path+'/Fig.12.Nse violin of evaluations of boundary reduction.eps',format='EPS', dpi=2000)
-plt.savefig(graphs_path+'/Fig.12.Nse violin of evaluations of boundary reduction.tif',format='TIFF', dpi=1200)
-plt.savefig(graphs_path+'/Fig.12.Nse violin of evaluations of boundary reduction.pdf',format='PDF', dpi=1200)
+plt.savefig(graphs_path+'/Nse violin of evaluations of boundary reduction.eps',format='EPS', dpi=2000)
+plt.savefig(graphs_path+'/Nse violin of evaluations of boundary reduction.tif',format='TIFF', dpi=1200)
+plt.savefig(graphs_path+'/Nse violin of evaluations of boundary reduction.pdf',format='PDF', dpi=1200)
 plt.show()
 
 

@@ -10,7 +10,7 @@ from Zhangjiashan.projects.variables import variables
 ORIGINAL = 'ZhangjiashanRunoff1953-2018(1953-2018).xlsx'
 STATION = 'Zhangjiashan'
 PREDICTOR = 'esvr' # esvr or gbrt or lstm
-PREDICT_PATTERN = '1_ahead_pacf'
+PREDICT_PATTERN = '7_ahead_pacf_lag12'
 
 ensemble(
     root_path=root_path,

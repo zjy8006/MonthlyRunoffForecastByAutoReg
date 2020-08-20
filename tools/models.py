@@ -10,7 +10,7 @@ from sklearn.svm import SVR,NuSVR
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, mean_squared_log_error
-from sklearn.externals.joblib import Parallel, delayed
+# from sklearn.externals.joblib import Parallel, delayed
 from skopt.space import Real, Integer
 from skopt.utils import use_named_args
 from skopt import gp_minimize,forest_minimize, dummy_minimize
@@ -45,7 +45,7 @@ from tools.plot_utils import plot_objective_
 from tools.plot_utils import plot_rela_pred
 from tools.plot_utils import plot_history
 from tools.plot_utils import plot_error_distribution
-from tools.dump_data import dum_pred_results
+from tools.dump_data import dump_pred_results
 
 ESVR_SPACE = [
         # Penalty parameter `C` of the error term
@@ -197,7 +197,7 @@ def esvr(root_path,station,predict_pattern,optimizer='gp',n_calls=100,cv=10):
             dev_predictions[dev_predictions<0.0]=0.0
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
             test_predictions[test_predictions<0.0]=0.0
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -287,7 +287,7 @@ def esvr(root_path,station,predict_pattern,optimizer='gp',n_calls=100,cv=10):
         test_predictions[test_predictions<0.0]=0.0
 
 
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -369,7 +369,7 @@ def esvr_multi_seed(root_path,station,predict_pattern,optimizer='gp',n_calls=100
                 dev_predictions[dev_predictions<0.0]=0.0
                 test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
                 test_predictions[test_predictions<0.0]=0.0
-                dum_pred_results(
+                dump_pred_results(
                     path = model_path+model_name+'.csv',
                     train_y = train_y,
                     train_predictions=train_predictions,
@@ -449,7 +449,7 @@ def esvr_multi_seed(root_path,station,predict_pattern,optimizer='gp',n_calls=100
             dev_predictions[dev_predictions<0.0]=0.0
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
             test_predictions[test_predictions<0.0]=0.0
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -534,7 +534,7 @@ def one_step_esvr(root_path,station,decomposer,predict_pattern,optimizer='gp',wa
             dev_predictions[dev_predictions<0.0]=0.0
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
             test_predictions[test_predictions<0.0]=0.0
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -618,7 +618,7 @@ def one_step_esvr(root_path,station,decomposer,predict_pattern,optimizer='gp',wa
         test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
         test_predictions[test_predictions<0.0]=0.0
 
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -709,7 +709,7 @@ def one_step_esvr_multi_seed(root_path,station,decomposer,predict_pattern,optimi
                 dev_predictions[dev_predictions<0.0]=0.0
                 test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
                 test_predictions[test_predictions<0.0]=0.0
-                dum_pred_results(
+                dump_pred_results(
                     path = model_path+model_name+'.csv',
                     train_y = train_y,
                     train_predictions=train_predictions,
@@ -790,7 +790,7 @@ def one_step_esvr_multi_seed(root_path,station,decomposer,predict_pattern,optimi
             dev_predictions[dev_predictions<0.0]=0.0
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
             test_predictions[test_predictions<0.0]=0.0
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -874,7 +874,7 @@ def multi_step_esvr(root_path,station,decomposer,predict_pattern,lags,model_id,o
             train_predictions = np.multiply(train_predictions + 1, sMax -sMin) / 2 + sMin
             dev_predictions = np.multiply(dev_predictions + 1, sMax -sMin) / 2 + sMin
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -957,7 +957,7 @@ def multi_step_esvr(root_path,station,decomposer,predict_pattern,lags,model_id,o
         test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
     
     
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -1043,7 +1043,7 @@ def multi_step_esvr_multi_seed(root_path,station,decomposer,predict_pattern,lags
                 train_predictions = np.multiply(train_predictions + 1, sMax -sMin) / 2 + sMin
                 dev_predictions = np.multiply(dev_predictions + 1, sMax -sMin) / 2 + sMin
                 test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
-                dum_pred_results(
+                dump_pred_results(
                     path = model_path+model_name+'.csv',
                     train_y = train_y,
                     train_predictions=train_predictions,
@@ -1126,7 +1126,7 @@ def multi_step_esvr_multi_seed(root_path,station,decomposer,predict_pattern,lags
             test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
 
 
-            dum_pred_results(
+            dump_pred_results(
                 path = model_path+model_name+'.csv',
                 train_y = train_y,
                 train_predictions=train_predictions,
@@ -1279,7 +1279,7 @@ def gbrt(root_path,station,predict_pattern,optimizer='gp',n_calls=100,cv=10):
         test_predictions[test_predictions<0.0]=0.0
 
 
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -1436,7 +1436,7 @@ def one_step_gbrt(root_path,station,decomposer,predict_pattern,optimizer='gp',wa
         test_predictions[test_predictions<0.0]=0.0
 
 
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -1599,7 +1599,7 @@ def multi_step_gbrt(root_path,station,decomposer,predict_pattern,lags,model_id,o
         test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
 
 
-        dum_pred_results(
+        dump_pred_results(
             path = model_path+model_name+'.csv',
             train_y = train_y,
             train_predictions=train_predictions,
@@ -1857,7 +1857,7 @@ def lstm(root_path,station,predict_pattern,seed,
     test_predictions = np.multiply(test_predictions + 1,sMax - sMin) / 2 + sMin
     test_predictions[test_predictions<0.0]=0.0
     logger.info('Dump the prediction results...')
-    dum_pred_results(
+    dump_pred_results(
         path = model_path+model_name+'.csv',
         train_y = train_y,
         train_predictions=train_predictions,
@@ -2171,7 +2171,7 @@ def one_step_lstm(
     test_predictions = np.multiply(test_predictions + 1, sMax -sMin) / 2 + sMin
     test_predictions[test_predictions<0.0]=0.0
     logger.info('Dump prediction results...')
-    dum_pred_results(
+    dump_pred_results(
         path = model_path+model_name+'.csv',
         train_y = train_y,
         train_predictions=train_predictions,
@@ -2487,7 +2487,7 @@ def multi_step_lstm(
     test_predictions = np.multiply(test_predictions + 1,sMax - sMin) / 2 + sMin
 
     logger.info('Dump prediction results...')
-    dum_pred_results(
+    dump_pred_results(
         path = model_path+model_name+'.csv',
         train_y = train_y,
         train_predictions=train_predictions,

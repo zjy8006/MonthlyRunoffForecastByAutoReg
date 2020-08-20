@@ -3,7 +3,7 @@ root = os.path.abspath(os.path.dirname('__file__'))
 import sys
 sys.path.append(root)
 from tools.plot_utils import plot_rela_pred
-from tools.dump_data import dum_pred_results
+from tools.dump_data import dump_pred_results
 from config.globalLog import logger
 import pandas as pd
 import numpy as np
@@ -83,7 +83,7 @@ time_cost = end-start
 # plot_rela_pred(dev,dev_pred,fig_savepath=model_path  + "arima"+str(order)+"_dev_pred.png")
 plot_rela_pred(test,test_pred,fig_savepath=model_path  + "arima"+str(order)+"_test_pred.png")
 
-dum_pred_results(
+dump_pred_results(
             path = model_path+'arima'+str(order)+'_results.csv',
             # train_y = train,
             # train_predictions=train_pred,

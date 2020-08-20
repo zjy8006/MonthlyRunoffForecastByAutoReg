@@ -178,8 +178,8 @@ cbar = fig.colorbar(im, cax=cb_ax)
 cbar.set_ticks(np.arange(0, 1.1, 0.5))
 cbar.set_label(r"Correlation")
 # cbar.set_ticklabels(['low', 'medium', 'high'])
-plt.savefig(graphs_path+"Fig.9.Pearson corr of Huaxian.tif",format="TIFF",dpi=500)
-plt.savefig(graphs_path+"Fig.9.Pearson corr of Huaxian.pdf",format="PDF",dpi=1200)
+plt.savefig(graphs_path+"Pearson corr of Huaxian.tif",format="TIFF",dpi=500)
+plt.savefig(graphs_path+"Pearson corr of Huaxian.pdf",format="PDF",dpi=1200)
 plt.show()
 
 

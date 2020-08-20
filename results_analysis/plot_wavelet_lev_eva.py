@@ -56,8 +56,8 @@ cbar.set_label(r'$NSE$')
 cbar.set_ticks(np.arange(0, 1.1, 0.2))
 # cbar.set_ticks(np.arange(min_v,max_v+0.1, interval))
 fig.subplots_adjust(bottom=0.1, top=0.99, left=0.12, right=0.82,wspace=0.3, hspace=0.1)
-plt.savefig(root_path+'/graphs/Fig.8 NSE of MODWT-SVR with different wavelets and levels.tif',format='TIFF',dpi=1200)
-plt.savefig(root_path+'/graphs/Fig.8 NSE of MODWT-SVR with different wavelets and levels.pdf',format='PDF',dpi=1200)
+plt.savefig(root_path+'/graphs/NSE of MODWT-SVR with different wavelets and levels.tif',format='TIFF',dpi=1200)
+plt.savefig(root_path+'/graphs/NSE of MODWT-SVR with different wavelets and levels.pdf',format='PDF',dpi=1200)
 plt.show()
 
 

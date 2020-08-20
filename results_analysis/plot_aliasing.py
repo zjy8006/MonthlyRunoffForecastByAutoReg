@@ -46,9 +46,9 @@ plt.ylabel('Amplitude')
 plt.xlabel('Frequency (1/month)')
 
 plt.tight_layout()
-plt.savefig(graphs_path+'/Fig.5.aliasing of Huaxian VMD.eps',format='EPS',dpi=2000)
-plt.savefig(graphs_path+'/Fig.5.aliasing of Huaxian VMD.tif',format='TIFF',dpi=1200)
-plt.savefig(graphs_path+'/Fig.5.aliasing of Huaxian VMD.pdf',format='PDF',dpi=1200)
+plt.savefig(graphs_path+'/Aliasing of Huaxian VMD.eps',format='EPS',dpi=2000)
+plt.savefig(graphs_path+'/Aliasing of Huaxian VMD.tif',format='TIFF',dpi=1200)
+plt.savefig(graphs_path+'/Aliasing of Huaxian VMD.pdf',format='PDF',dpi=1200)
 
 
 plt.figure(figsize=(0.6,1))
